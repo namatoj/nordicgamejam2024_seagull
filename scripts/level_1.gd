@@ -14,8 +14,11 @@ func _ready():
 func _process(delta):
 
 	if trail_has_loop():
+		# 1. Find center
+		# 2. Spawn new scene
+		
+		
 		for trail_marker in trail_markers:
-			
 			trail_marker.queue_free()
 		trail_markers.clear()
 	
