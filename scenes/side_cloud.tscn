@@ -1,4 +1,12 @@
-shader_type canvas_item;
+[gd_scene load_steps=8 format=3 uid="uid://bfwmrrdbkprxv"]
+
+[ext_resource type="Script" path="res://scenes/SideCloud.gd" id="1_8ghlf"]
+[ext_resource type="Script" path="res://scenes/Sprite2D.gd" id="2_8tgub"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8tsim"]
+
+[sub_resource type="Shader" id="Shader_iu6hi"]
+code = "shader_type canvas_item;
 
 // Uniforms for customization
 uniform float cloudscale = 1.1;
@@ -83,3 +91,42 @@ void fragment() {
     vec4 cloudColorVec = vec4(cloudColor, combinedAlpha); // Set cloud color and combined alpha
     COLOR = cloudColorVec;
 }
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clgk1"]
+shader = SubResource("Shader_iu6hi")
+shader_parameter/cloudscale = 1.1
+shader_parameter/speed = 0.01
+shader_parameter/cloudColor = Vector3(1, 1, 1)
+shader_parameter/cloudFluffiness = 0.6
+shader_parameter/cloudcover = 0.2
+shader_parameter/cloudalpha = 8.0
+shader_parameter/m = Transform2D(1.6, -1.2, 1.2, 1.6, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_ugym2"]
+offsets = PackedFloat32Array(0.970779, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oyeuv"]
+gradient = SubResource("Gradient_ugym2")
+
+[node name="SideCloudBottom" type="Area2D"]
+position = Vector2(-2000, 1000)
+rotation = 0.462512
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_8ghlf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_8tsim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_clgk1")
+position = Vector2(2.08165e-12, 1280.15)
+rotation = 4.71239
+scale = Vector2(10, 40000)
+texture = SubResource("GradientTexture1D_oyeuv")
+script = ExtResource("2_8tgub")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
