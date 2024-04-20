@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvbx3kotn2ksf"]
+[gd_scene load_steps=9 format=3 uid="uid://7lussdms2lva"]
 
 [ext_resource type="Texture2D" uid="uid://cbf8waqy0cqu7" path="res://iso_tileset.png" id="1_4rnbt"]
 [ext_resource type="Texture2D" uid="uid://csbhio787q7wg" path="res://art/tiles/landscapeTiles_066.png" id="2_a7frs"]
