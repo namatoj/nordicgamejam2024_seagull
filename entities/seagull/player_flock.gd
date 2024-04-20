@@ -9,6 +9,7 @@ signal place_marker(position, rotation)
 @export var speed = 400
 @export var rotation_speed = 2
 @export var trail_length = 20
+@export var distance_between_markers = 10
 
 var rotation_radians = 0
 var target = Vector2.ZERO
@@ -37,10 +38,6 @@ func _process(delta):
 	rotation_radians = map_radians_to_circle(rotate_toward(rotation_radians, angle_to_mouse, delta * rotation_speed))
 	acc_rotation += rotation_radians - old_rotation
 
-	#if abs(acc_rotation) > 2 * PI:
-		#print("loop happened")
-		#acc_rotation = 0
-
 	var velocity = Vector2.from_angle(rotation_radians) * speed
 	position += velocity * delta
 	update_seagulls()
@@ -53,7 +50,7 @@ func _process(delta):
 		trail_marker_positions.clear()
 		
 func should_add_trail_marker():
-	if last_trail_marker_pos.distance_to(position) > 10:
+	if last_trail_marker_pos.distance_to(position) > distance_between_markers:
 		last_trail_marker_pos = position
 		trail_marker_positions.push_back(position)
 		print(len(trail_marker_positions))

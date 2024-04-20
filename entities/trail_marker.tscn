@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6gs834oad1gs"]
+[gd_scene load_steps=3 format=3 uid="uid://dti3ogbl3dmcj"]
 
-[ext_resource type="Texture2D" uid="uid://c5ys8hjs8nkct" path="res://art/arrow_marker.png" id="1_tkinv"]
+[ext_resource type="Texture2D" path="res://art/arrow_marker.png" id="1_tkinv"]
 [ext_resource type="Script" path="res://entities/trail_marker.gd" id="2_5ukev"]
 
 [node name="Trail Marker" type="Sprite2D"]
@@ -9,10 +9,3 @@ z_index = 1
 scale = Vector2(2, 2)
 texture = ExtResource("1_tkinv")
 script = ExtResource("2_5ukev")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
