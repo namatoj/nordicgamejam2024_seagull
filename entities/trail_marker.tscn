@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6gs834oad1gs"]
+
+[ext_resource type="Texture2D" uid="uid://c5ys8hjs8nkct" path="res://art/arrow_marker.png" id="1_tkinv"]
+
+[node name="Trail Marker" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.215686)
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_tkinv")

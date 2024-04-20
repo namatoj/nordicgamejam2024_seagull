@@ -4,7 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://b4cqwo2ebvhwp" path="res://entities/seagull/seagull.tscn" id="2_ft5c6"]
 
 [node name="Player Flock" type="Node2D"]
+z_index = 2
 script = ExtResource("1_brghv")
 metadata/_edit_group_ = true
 
 [node name="Seagull" parent="." instance=ExtResource("2_ft5c6")]
+
+[node name="Line2D" type="Line2D" parent="."]
