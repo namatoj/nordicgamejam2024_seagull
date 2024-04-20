@@ -6,7 +6,6 @@
 [node name="Player Flock" type="Node2D"]
 z_index = 2
 script = ExtResource("1_brghv")
-trail_length = 200
 
 [node name="Seagulls" type="Node2D" parent="."]
 
