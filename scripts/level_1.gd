@@ -58,3 +58,6 @@ func _on_player_flock_place_marker(position, rotation):
 
 func _on_picked_up_seagull():
 	$"Player Flock".add_seagull()
+
+func _on_player_flock_game_over():
+	get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
