@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://byk8xdsw26qb6"]
+
+[ext_resource type="Script" path="res://entities/AnimationManager.gd" id="1_bm1ec"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvdqh"]
+
+[node name="AnimationManager" type="Node2D"]
+script = ExtResource("1_bm1ec")
+sprite_name = "seagull"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_xvdqh")
