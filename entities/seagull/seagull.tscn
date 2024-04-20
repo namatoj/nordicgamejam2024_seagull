@@ -1,120 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4cqwo2ebvhwp"]
+[gd_scene load_steps=5 format=3 uid="uid://b4cqwo2ebvhwp"]
 
 [ext_resource type="Script" path="res://entities/seagull/seagull.gd" id="1_8p7du"]
-[ext_resource type="Texture2D" uid="uid://pbc8wk3ooov5" path="res://entities/seagull/SpriteSheet.png" id="1_nruwx"]
 [ext_resource type="Script" path="res://entities/AnimationManager.gd" id="2_n6gqi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkv2v"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_b0boa"]
+radius = 50.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjms5"]
-atlas = ExtResource("1_nruwx")
-region = Rect2(0, 72, 23, 36)
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvdqh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ukhh"]
-atlas = ExtResource("1_nruwx")
-region = Rect2(0, 36, 23, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_phbt8"]
-atlas = ExtResource("1_nruwx")
-region = Rect2(0, 0, 23, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yyfsb"]
-atlas = ExtResource("1_nruwx")
-region = Rect2(0, 252, 23, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtvml"]
-atlas = ExtResource("1_nruwx")
-region = Rect2(0, 216, 23, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ab47r"]
-atlas = ExtResource("1_nruwx")
-region = Rect2(0, 180, 23, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qry0s"]
-atlas = ExtResource("1_nruwx")
-region = Rect2(0, 144, 23, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0q4pq"]
-atlas = ExtResource("1_nruwx")
-region = Rect2(0, 108, 23, 36)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fqlu2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bjms5")
-}],
-"loop": true,
-"name": &"0",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ukhh")
-}],
-"loop": true,
-"name": &"1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_phbt8")
-}],
-"loop": true,
-"name": &"2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yyfsb")
-}],
-"loop": true,
-"name": &"3",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wtvml")
-}],
-"loop": true,
-"name": &"4",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ab47r")
-}],
-"loop": true,
-"name": &"5",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qry0s")
-}],
-"loop": true,
-"name": &"6",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0q4pq")
-}],
-"loop": true,
-"name": &"7",
-"speed": 5.0
-}]
-
-[node name="Seagull" type="Area2D"]
+[node name="Seagull" type="CharacterBody2D"]
 script = ExtResource("1_8p7du")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_pkv2v")
+shape = SubResource("CircleShape2D_b0boa")
 
 [node name="AnimationManager" type="Node2D" parent="."]
 script = ExtResource("2_n6gqi")
+sprite_name = "seagull"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationManager"]
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_fqlu2")
-animation = &"0"
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_xvdqh")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

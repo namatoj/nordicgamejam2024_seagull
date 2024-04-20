@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var seagulls : Node2D = $Seagulls
 @onready var raycast: RayCast2D = $RayCast2D
+@onready var flock_center: Marker2D = $FlockCenter
 
 @export var speed = 400
 @export var rotation_speed = 2
@@ -32,6 +33,20 @@ func update_seagulls():
 	for seagull in seagulls.get_children():
 		seagull.look_towards(rotation_radians)
 
+# func _physics_process(delta):
+# 	for seagull in seagulls.get_children():
+# 		var direction_to_center = (flock_center.position - seagull.position).normalized()
+# 		var distance_to_center = flock_center.position.distance_to(seagull.position)
+
+# 		var speed_to_center = distance_to_center * 0.5 * speed
+		
+# 		seagull.velocity = direction_to_center * speed_to_center * delta
+
+# 		# Apply movement using the physics engine
+# 		seagull.move_and_slide()
+
+# 		# Optional: Update the raycast's target position if used for other functionalities
+# 		seagull.raycast.target_position = seagull.velocity
 
 func map_radians_to_circle(angle):
 	return fposmod(angle, 2 * PI)
