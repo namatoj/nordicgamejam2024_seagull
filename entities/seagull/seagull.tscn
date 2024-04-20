@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4cqwo2ebvhwp"]
+[gd_scene load_steps=5 format=3 uid="uid://b4cqwo2ebvhwp"]
 
 [ext_resource type="Script" path="res://entities/seagull/seagull.gd" id="1_8p7du"]
 [ext_resource type="Script" path="res://entities/AnimationManager.gd" id="2_n6gqi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0boa"]
 radius = 50.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvdqh"]
 
 [node name="Seagull" type="CharacterBody2D"]
 script = ExtResource("1_8p7du")
@@ -18,6 +20,6 @@ sprite_name = "seagull"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationManager"]
 scale = Vector2(0.4, 0.4)
-animation = &""
+sprite_frames = SubResource("SpriteFrames_xvdqh")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
