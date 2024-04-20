@@ -7,4 +7,17 @@
 script = ExtResource("1_brghv")
 metadata/_edit_group_ = true
 
-[node name="Seagull" parent="." instance=ExtResource("2_ft5c6")]
+[node name="Seagulls" type="Node2D" parent="."]
+
+[node name="Seagull4" parent="Seagulls" instance=ExtResource("2_ft5c6")]
+position = Vector2(60, -66)
+
+[node name="Seagull" parent="Seagulls" instance=ExtResource("2_ft5c6")]
+
+[node name="Seagull2" parent="Seagulls" instance=ExtResource("2_ft5c6")]
+position = Vector2(118, 2)
+
+[node name="Seagull3" parent="Seagulls" instance=ExtResource("2_ft5c6")]
+position = Vector2(44, 100)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

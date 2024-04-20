@@ -17,7 +17,9 @@ config/icon="res://thumbnail.png"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/viewport_width=2304
+window/size/viewport_height=1296
+window/stretch/scale=2.0
 
 [editor_plugins]
 
