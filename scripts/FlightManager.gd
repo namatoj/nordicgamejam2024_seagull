@@ -6,6 +6,10 @@ extends Node
 @export var speed : float = 500
 @export var rotation_speed = 2
 
+signal position_reached
+
+var target_sensitivity = 20
+
 var target_pos : Vector2 = Vector2.ZERO
 var target_enabled = false
 
@@ -16,6 +20,8 @@ func _process(delta):
 
 		var velocity = Vector2.from_angle(parent.rotation_radians) * speed
 		parent.position += velocity * delta
+		if parent.position.distance_to(target_pos) < target_sensitivity:
+			emit_signal("position_reached")
 
 		
 
