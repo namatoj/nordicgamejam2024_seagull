@@ -1,8 +1,11 @@
 extends Node2D
 var trail_marker = preload("res://entities/trail_marker.tscn")
+var loop_summon = preload("res://entities/loop_summon.tscn")
 
 @export var max_trail_length = 100
 var trail_markers = []
+var first_marker_in_loop_index = -1
+var last_marker_in_loop_index = -1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,9 +17,13 @@ func _ready():
 func _process(delta):
 
 	if trail_has_loop():
-		# 1. Find center
-		# 2. Spawn new scene
+		var polygon_points = []
+		for marker_in_loop in trail_markers.slice(first_marker_in_loop_index, last_marker_in_loop_index+1):
+			polygon_points.append(marker_in_loop.position)
 		
+		var summon = loop_summon.instantiate()
+		summon.polygon_points = polygon_points
+		add_child(summon)
 		
 		for trail_marker in trail_markers:
 			trail_marker.queue_free()
@@ -31,7 +38,8 @@ func trail_has_loop():
 				trail_markers[i].position, trail_markers[i+1].position,
 				trail_markers[j].position, trail_markers[j+1].position
 			):
-				print(i," ", j)
+				first_marker_in_loop_index = i
+				last_marker_in_loop_index = j
 				return true
 	return false
 
