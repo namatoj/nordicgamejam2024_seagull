@@ -1,6 +1,7 @@
 extends Node2D
 
 signal place_marker(position, rotation)
+signal game_over
 
 @onready var seagulls : Node2D = $Seagulls
 @onready var raycast: RayCast2D = $RayCast2D
@@ -42,6 +43,9 @@ func should_add_trail_marker():
 	return false
 
 func update_seagulls():
+	if seagulls.get_child_count() == 0:
+		game_over.emit()
+		return
 	for seagull in seagulls.get_children():
 		seagull.look_towards(rotation_radians)
 
