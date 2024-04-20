@@ -10,20 +10,18 @@ config_version=5
 
 [application]
 
-config/name="IsometricExample"
+config/name="Mad Flock"
 run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://thumbnail.png"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=600
 window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/codeandweb.texturepacker/plugin.cfg")
+enabled=PackedStringArray()
 
 [rendering]
 
