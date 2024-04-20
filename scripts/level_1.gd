@@ -1,7 +1,9 @@
 extends Node2D
 var trail_marker = preload("res://entities/trail_marker.tscn")
 
+@export var max_trail_length = 100
 var trail_markers = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +28,7 @@ func trail_has_loop():
 				trail_markers[i].position, trail_markers[i+1].position,
 				trail_markers[j].position, trail_markers[j+1].position
 			):
+				print(i," ", j)
 				return true
 	return false
 
@@ -36,3 +39,7 @@ func _on_player_flock_place_marker(position, rotation):
 	marker.rotation = rotation
 	trail_markers.append(marker)
 	add_child(marker)
+	
+	if len(trail_markers) > max_trail_length:
+		var last_marker = trail_markers.pop_front()
+		last_marker.queue_free()

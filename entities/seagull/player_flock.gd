@@ -8,7 +8,7 @@ signal place_marker(position, rotation)
 
 @export var speed = 400
 @export var rotation_speed = 2
-@export var distance_between_markers = 10
+@export var distance_between_markers = 60
 @export var min_separation = 50 # Minimum distance between seagulls
 
 var rotation_radians = 0
@@ -16,10 +16,6 @@ var target = Vector2.ZERO
 var acc_rotation = 0.0
 
 var last_trail_marker_pos = Vector2.ZERO
-
-var trail_marker_positions = []
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
