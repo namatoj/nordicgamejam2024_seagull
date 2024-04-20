@@ -1,5 +1,7 @@
 extends Node2D
 
+signal place_marker(position, rotation)
+
 @onready var seagulls : Node2D = $Seagulls
 @onready var raycast: RayCast2D = $RayCast2D
 @onready var flock_center: Marker2D = $FlockCenter
@@ -7,16 +9,21 @@ extends Node2D
 
 @export var speed = 400
 @export var rotation_speed = 2
+@export var distance_between_markers = 60
 @export var min_separation = 50 # Minimum distance between seagulls
 
 var rotation_radians = 0
 var target = Vector2.ZERO
 
+var last_trail_marker_pos = Vector2.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	last_trail_marker_pos = position
 	update_flock_center()
 	flight_manager.target_pos = target
 	flight_manager.target_enabled = true
+
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -30,11 +37,19 @@ func _process(delta):
 
 	update_seagulls()
 	update_flock_center()
+	
+	if should_add_trail_marker():
+		place_marker.emit(position, rotation_radians) 
+		
+func should_add_trail_marker():
+	if last_trail_marker_pos.distance_to(position) > distance_between_markers:
+		last_trail_marker_pos = position
+		return true
+	return false
 
 func update_seagulls():
 	for seagull in seagulls.get_children():
 		seagull.look_towards(rotation_radians)
-
 
 func add_seagull():
 	var retries = 100

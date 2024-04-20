@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bk2ta1wj1xsh7" path="res://scenes/flight_manager.tscn" id="3_fxly1"]
 
 [node name="Player Flock" type="Node2D"]
+z_index = 2
 script = ExtResource("1_brghv")
 
 [node name="Seagulls" type="Node2D" parent="."]
