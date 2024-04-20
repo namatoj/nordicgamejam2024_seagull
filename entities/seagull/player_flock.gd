@@ -29,7 +29,6 @@ func _process(delta):
 	update_seagulls()
 
 func update_seagulls():
-	print(rotation_radians)
 	for seagull in seagulls.get_children():
 		seagull.look_towards(rotation_radians)
 
