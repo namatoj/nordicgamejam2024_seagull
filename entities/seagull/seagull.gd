@@ -1,5 +1,7 @@
 class_name Seagull
-extends Area2D
+extends CharacterBody2D
+
+@onready var raycast: RayCast2D = $RayCast2D
 
 @onready var animation_manager : AnimationManager = $AnimationManager
 
