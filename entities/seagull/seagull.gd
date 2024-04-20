@@ -7,3 +7,6 @@ extends CharacterBody2D
 
 func look_towards(radians):
 	animation_manager.look_towards(radians)
+
+func get_speed():
+	return get_parent().get_parent().get_speed()
