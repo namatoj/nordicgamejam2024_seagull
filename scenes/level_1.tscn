@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwo5n4s0u5xig"]
+[gd_scene load_steps=6 format=3 uid="uid://dwo5n4s0u5xig"]
 
 [ext_resource type="PackedScene" uid="uid://7lussdms2lva" path="res://scenes/tile_map.tscn" id="1_j1hdi"]
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_kmv8a"]
 [ext_resource type="PackedScene" uid="uid://c424xis6gej4s" path="res://entities/seagull/player_flock.tscn" id="2_0kmc0"]
 [ext_resource type="PackedScene" uid="uid://dback3wr4uenj" path="res://entities/raptor/raptor.tscn" id="3_fhjpq"]
+[ext_resource type="PackedScene" uid="uid://b7askbjtprtsp" path="res://entities/seagull/sitting_seagull.tscn" id="5_5uwll"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_kmv8a")
@@ -15,5 +16,19 @@ layer_0/tile_data = PackedInt32Array(-131071, 3, 0, -131070, 3, 0, -131069, 3, 0
 
 [node name="Raptor" parent="." instance=ExtResource("3_fhjpq")]
 position = Vector2(912, 306)
+
+[node name="SittingSeagulls" type="Node" parent="."]
+
+[node name="SittingSeagull2" parent="SittingSeagulls" groups=["sittingSeagulls"] instance=ExtResource("5_5uwll")]
+position = Vector2(-264, -4)
+
+[node name="SittingSeagull3" parent="SittingSeagulls" groups=["sittingSeagulls"] instance=ExtResource("5_5uwll")]
+position = Vector2(-1298, -196)
+
+[node name="SittingSeagull4" parent="SittingSeagulls" groups=["sittingSeagulls"] instance=ExtResource("5_5uwll")]
+position = Vector2(-974, -767)
+
+[node name="SittingSeagull" parent="SittingSeagulls" groups=["sittingSeagulls"] instance=ExtResource("5_5uwll")]
+position = Vector2(-587, -635)
 
 [connection signal="place_marker" from="Player Flock" to="." method="_on_player_flock_place_marker"]
