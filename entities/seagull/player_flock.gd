@@ -25,13 +25,10 @@ func _ready():
 	flight_manager.target_enabled = true
 
 
-func _input(event):
-	if event is InputEventMouseMotion:
-		target = get_global_mouse_position()
-		flight_manager.target_pos = target
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	target = get_global_mouse_position()
+	flight_manager.target_pos = target
+
 	if Input.is_action_just_pressed("Action"):
 		add_seagull()
 
