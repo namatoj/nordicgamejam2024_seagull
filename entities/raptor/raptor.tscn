@@ -14,7 +14,7 @@ radius = 50.0
 script = ExtResource("1_0kv3s")
 
 [node name="AnimationManager" parent="." instance=ExtResource("1_3lcgo")]
-modulate = Color(0.68, 0.41684, 0.0952, 1)
+sprite_name = "falcon"
 
 [node name="DetectionRadius" type="Area2D" parent="."]
 

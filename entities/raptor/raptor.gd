@@ -74,8 +74,9 @@ func start_attack():
 	# Slow down, then speed up quickly, fly for a bit, then slow down again
 	tween.tween_property(flight_manager, "rotation_speed", 4, 0.01)
 	tween.tween_property(flight_manager, "speed", 50, 0.5)
-	tween.tween_interval(1)
-	tween.tween_property(flight_manager, "rotation_speed", 0.5, 0.01)
+	tween.tween_interval(0.75)
+	tween.tween_property(flight_manager, "rotation_speed", 0.25, 0.01)
+	tween.tween_interval(0.25)
 	tween.tween_property(flight_manager, "speed", 1400, 0.1)
 	tween.tween_interval(0.5)
 	tween.tween_property(flight_manager, "speed", 100, 1)
@@ -90,7 +91,7 @@ func estimate_target_position() -> Vector2:
 	var target_position = target.global_position
 	var distance = target_position.distance_to(global_position)
 	var time_to_reach = distance / 400
-	return target_position + target_velocity * (time_to_reach + 0.5)
+	return target_position + target_velocity * time_to_reach
 
 func _on_attack_complete():
 	can_attack = true
