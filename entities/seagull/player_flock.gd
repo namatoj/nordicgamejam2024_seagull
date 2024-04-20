@@ -50,6 +50,7 @@ func _process(delta):
 	
 	if trail_is_intersecting():
 		print("Loop happened")
+		trail_marker_positions.clear()
 		
 func should_add_trail_marker():
 	if last_trail_marker_pos.distance_to(position) > 10:
@@ -69,16 +70,14 @@ func update_seagulls():
 func map_radians_to_circle(angle):
 	return fposmod(angle, 2 * PI)
 
-func trail_is_intersecting():
-	var segments = []
+func trail_is_intersecting():	
 	for i in len(trail_marker_positions) - 1:
-		segments.append(trail_marker_positions[i] - trail_marker_positions[i+1])
-	
-	#for i in len(segments):
-		#for j in range(i, len(segments)):
-			## Don't check all combinations
-			## Return on the first "hit"
-			#pass
+		for j in range(i+2, len(trail_marker_positions) - 1):
+			if Geometry2D.segment_intersects_segment(
+				trail_marker_positions[i], trail_marker_positions[i+1],
+				trail_marker_positions[j], trail_marker_positions[j+1]
+			):
+				return true
 
 	return false
 
