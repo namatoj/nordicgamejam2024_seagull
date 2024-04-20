@@ -22,6 +22,7 @@ func _process(delta):
 			polygon_points.append(marker_in_loop.position)
 		
 		var summon = loop_summon.instantiate()
+		summon.picked_up_seagull.connect(_on_picked_up_seagull)
 		summon.polygon_points = polygon_points
 		add_child(summon)
 		
@@ -54,3 +55,6 @@ func _on_player_flock_place_marker(position, rotation):
 	if len(trail_markers) > max_trail_length:
 		var last_marker = trail_markers.pop_front()
 		last_marker.queue_free()
+
+func _on_picked_up_seagull():
+	$"Player Flock".add_seagull()
