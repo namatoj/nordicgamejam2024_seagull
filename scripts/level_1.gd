@@ -7,10 +7,16 @@ var trail_markers = []
 var first_marker_in_loop_index = -1
 var last_marker_in_loop_index = -1
 
+var currentGoals = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	currentGoals = [
+		[false, 'Sample 1 from level'], 
+		[false, 'Sample 2'],
+		[true, 'Sample 3']
+	]
+	$HUD.get_child(0).currentGoals = currentGoals
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

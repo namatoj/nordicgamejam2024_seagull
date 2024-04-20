@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwo5n4s0u5xig"]
+[gd_scene load_steps=11 format=3 uid="uid://dwo5n4s0u5xig"]
 
 [ext_resource type="PackedScene" uid="uid://7lussdms2lva" path="res://scenes/tile_map.tscn" id="1_j1hdi"]
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_kmv8a"]
 [ext_resource type="PackedScene" uid="uid://c424xis6gej4s" path="res://entities/seagull/player_flock.tscn" id="2_0kmc0"]
 [ext_resource type="PackedScene" uid="uid://dback3wr4uenj" path="res://entities/raptor/raptor.tscn" id="3_fhjpq"]
 [ext_resource type="Shader" path="res://shaders/clouds.gdshader" id="5_4duxn"]
-[ext_resource type="PackedScene" path="res://entities/seagull/sitting_seagull.tscn" id="5_5uwll"]
+[ext_resource type="PackedScene" uid="uid://b7askbjtprtsp" path="res://entities/seagull/sitting_seagull.tscn" id="5_5uwll"]
 [ext_resource type="Script" path="res://scenes/CloudCover.gd" id="6_51nwp"]
+[ext_resource type="PackedScene" uid="uid://djr04kk8p3omm" path="res://scenes/hud.tscn" id="8_p2l40"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8tsim"]
 
@@ -59,6 +60,8 @@ custom_minimum_size = Vector2(5000, 5000)
 offset_left = -3000.0
 offset_right = 5000.0
 offset_bottom = 5000.0
+
+[node name="HUD" parent="." instance=ExtResource("8_p2l40")]
 
 [connection signal="game_over" from="Player Flock" to="." method="_on_player_flock_game_over"]
 [connection signal="place_marker" from="Player Flock" to="." method="_on_player_flock_place_marker"]
