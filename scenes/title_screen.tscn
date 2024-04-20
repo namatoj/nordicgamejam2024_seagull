@@ -27,6 +27,6 @@ offset_top = 78.0
 offset_right = 891.0
 offset_bottom = 243.0
 theme_override_font_sizes/font_size = 120
-text = "Mad Flock"
+text = "What the Flock"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
