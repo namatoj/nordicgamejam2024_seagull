@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c424xis6gej4s"]
+
+[ext_resource type="Script" path="res://player_swarm.gd" id="1_w3o8h"]
+[ext_resource type="PackedScene" uid="uid://b4cqwo2ebvhwp" path="res://seagull.tscn" id="2_ft5c6"]
+
+[node name="Player Flock" type="Node2D"]
+script = ExtResource("1_w3o8h")
+speed = 100
+metadata/_edit_group_ = true
+
+[node name="Seagull" parent="." instance=ExtResource("2_ft5c6")]
