@@ -15,6 +15,8 @@ var acc_rotation = 0.0
 
 var last_trail_marker_pos = Vector2.ZERO
 
+var trail_marker_positions = []
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,33 +35,48 @@ func _process(delta):
 
 	rotation_radians = map_radians_to_circle(rotate_toward(rotation_radians, angle_to_mouse, delta * rotation_speed))
 	acc_rotation += rotation_radians - old_rotation
-	if abs(acc_rotation) > 2 * PI:
-		print("loop happened")
-		acc_rotation = 0
+
+	#if abs(acc_rotation) > 2 * PI:
+		#print("loop happened")
+		#acc_rotation = 0
 
 	var velocity = Vector2.from_angle(rotation_radians) * speed
 	position += velocity * delta
 	update_seagulls()
 	
 	if should_add_trail_marker():
-		pass
-		# Emit signal for level to act on!
+		place_marker.emit(position, rotation_radians)
+	
+	if trail_is_intersecting():
+		print("Loop happened")
 		
 func should_add_trail_marker():
-	if last_trail_marker_pos.distance_to(position) > 75:
+	if last_trail_marker_pos.distance_to(position) > 10:
 		last_trail_marker_pos = position
-		print("add marker")
-		place_marker.emit(position, rotation)
+		trail_marker_positions.push_back(position)
+		print(len(trail_marker_positions))
+		if len(trail_marker_positions) > trail_length:
+			trail_marker_positions.pop_front()
+
 		return true
 	return false
-
-
-
 
 func update_seagulls():
 	for seagull in seagulls.get_children():
 		seagull.look_towards(rotation_radians)
 
-
 func map_radians_to_circle(angle):
 	return fposmod(angle, 2 * PI)
+
+func trail_is_intersecting():
+	var segments = []
+	for i in len(trail_marker_positions) - 1:
+		segments.append(trail_marker_positions[i] - trail_marker_positions[i+1])
+	
+	#for i in len(segments):
+		#for j in range(i, len(segments)):
+			## Don't check all combinations
+			## Return on the first "hit"
+			#pass
+
+	return false

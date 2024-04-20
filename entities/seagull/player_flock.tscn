@@ -6,7 +6,7 @@
 [node name="Player Flock" type="Node2D"]
 z_index = 2
 script = ExtResource("1_brghv")
-speed = 50
+trail_length = 200
 metadata/_edit_group_ = true
 
 [node name="Seagulls" type="Node2D" parent="."]
