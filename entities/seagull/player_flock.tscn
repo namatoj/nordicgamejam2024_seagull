@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c424xis6gej4s"]
+[gd_scene load_steps=4 format=3 uid="uid://c424xis6gej4s"]
 
 [ext_resource type="Script" path="res://entities/seagull/player_flock.gd" id="1_brghv"]
 [ext_resource type="PackedScene" uid="uid://b4cqwo2ebvhwp" path="res://entities/seagull/seagull.tscn" id="2_ft5c6"]
+[ext_resource type="PackedScene" uid="uid://bk2ta1wj1xsh7" path="res://scenes/flight_manager.tscn" id="3_fxly1"]
 
 [node name="Player Flock" type="Node2D"]
+z_index = 2
 script = ExtResource("1_brghv")
 
 [node name="Seagulls" type="Node2D" parent="."]
@@ -23,3 +25,5 @@ position = Vector2(20, 90)
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="FlockCenter" type="Marker2D" parent="."]
+
+[node name="FlightManager" parent="." instance=ExtResource("3_fxly1")]

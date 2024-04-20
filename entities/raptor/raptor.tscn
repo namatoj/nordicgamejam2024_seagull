@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dback3wr4uenj"]
+
+[ext_resource type="Script" path="res://entities/raptor/raptor.gd" id="1_0kv3s"]
+[ext_resource type="PackedScene" uid="uid://byk8xdsw26qb6" path="res://scenes/animation_manager.tscn" id="1_3lcgo"]
+[ext_resource type="PackedScene" uid="uid://bk2ta1wj1xsh7" path="res://scenes/flight_manager.tscn" id="3_8xtnw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_snjd4"]
+radius = 400.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghyjh"]
+radius = 50.0
+
+[node name="Raptor" type="Node2D"]
+script = ExtResource("1_0kv3s")
+
+[node name="AnimationManager" parent="." instance=ExtResource("1_3lcgo")]
+modulate = Color(0.68, 0.41684, 0.0952, 1)
+
+[node name="DetectionRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
+shape = SubResource("CircleShape2D_snjd4")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_ghyjh")
+
+[node name="FlightManager" parent="." instance=ExtResource("3_8xtnw")]
+
+[connection signal="body_entered" from="DetectionRadius" to="." method="_on_body_enters_detection_radius"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

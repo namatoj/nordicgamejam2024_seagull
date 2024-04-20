@@ -14,6 +14,7 @@ func _ready():
 		sprite_frames.add_animation(dir)
 		sprite_frames.add_frame(dir, sprite, 1)
 	animated_sprite.frames = sprite_frames
+	animated_sprite.animation = "0"
 
 
 
