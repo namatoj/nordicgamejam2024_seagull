@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk2ta1wj1xsh7"]
+
+[ext_resource type="Script" path="res://scripts/FlightManager.gd" id="1_e4u8i"]
+
+[node name="FlightManager" type="Node"]
+script = ExtResource("1_e4u8i")
