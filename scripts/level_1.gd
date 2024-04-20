@@ -28,7 +28,6 @@ func trail_has_loop():
 				trail_markers[i].position, trail_markers[i+1].position,
 				trail_markers[j].position, trail_markers[j+1].position
 			):
-				print(i," ", j)
 				return true
 	return false
 
