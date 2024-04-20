@@ -7,8 +7,6 @@ signal place_marker(position, rotation)
 @onready var flock_center: Marker2D = $FlockCenter
 @onready var flight_manager: FlightManager = $FlightManager
 
-@export var speed = 400
-@export var rotation_speed = 2
 @export var distance_between_markers = 60
 @export var min_separation = 50 # Minimum distance between seagulls
 
@@ -22,7 +20,6 @@ func _ready():
 	last_trail_marker_pos = position
 	update_flock_center()
 	flight_manager.target_pos = target
-	flight_manager.target_enabled = true
 
 
 func _process(delta):
@@ -76,6 +73,10 @@ func update_flock_center():
 	for seagull in seagulls.get_children():
 		center += seagull.position
 	flock_center.position = center / max(count, 1)  # Avoid division by zero
+
+func get_speed():
+	var speed = Vector2(flight_manager.speed, 0).rotated(rotation_radians)
+	return speed
 
 # func _physics_process(delta):
 # 	for seagull in seagulls.get_children():

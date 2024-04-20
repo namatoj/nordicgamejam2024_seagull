@@ -19,7 +19,5 @@ func _process(delta):
 func _on_body_entered(body):
 	print("Entered collison polygon ", body)
 
-
-
 func _on_removal_timer_timeout():
 	queue_free()

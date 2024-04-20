@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://lik75871vssd"]
+[gd_scene load_steps=5 format=3 uid="uid://ckj47uc8jjdi"]
 
 [ext_resource type="Script" path="res://entities/loop_summon.gd" id="1_31btt"]
 [ext_resource type="Texture2D" uid="uid://f7sfqovu2mt1" path="res://art/seagull/seagull_12.png" id="1_c8nyl"]
@@ -46,5 +46,5 @@ texture = ExtResource("1_c8nyl")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="RemovalTimer" to="." method="_on_removal_timer_timeout"]
 [connection signal="timeout" from="RemovalTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="RemovalTimer" to="." method="_on_removal_timer_timeout"]
