@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwo5n4s0u5xig"]
+[gd_scene load_steps=3 format=3 uid="uid://dwo5n4s0u5xig"]
 
 [ext_resource type="PackedScene" uid="uid://7lussdms2lva" path="res://scenes/tile_map.tscn" id="1_j1hdi"]
+[ext_resource type="PackedScene" uid="uid://c424xis6gej4s" path="res://entities/player_flock.tscn" id="2_0kmc0"]
 
 [node name="main" type="Node2D"]
 
@@ -9,3 +10,6 @@ layer_0/tile_data = PackedInt32Array(-131071, 3, 0, -131070, 3, 0, -131069, 3, 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-97, 186)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Player Flock" parent="." instance=ExtResource("2_0kmc0")]
