@@ -1,0 +1,122 @@
+[gd_scene load_steps=17 format=3 uid="uid://b2hbr4cqj3xbh"]
+
+[ext_resource type="Texture2D" uid="uid://ovbyl1tqf838" path="res://art/cloud/cloud_f0_0.png" id="1_gieil"]
+[ext_resource type="Script" path="res://scenes/cloud.gd" id="1_p3fj2"]
+[ext_resource type="Texture2D" uid="uid://6y3g6pinw34k" path="res://art/cloud/cloud_f0_1.png" id="2_25pwr"]
+[ext_resource type="Texture2D" uid="uid://chyuimlhnujv7" path="res://art/cloud/cloud_f0_2.png" id="3_3jxll"]
+[ext_resource type="Texture2D" uid="uid://b7k1r17cn3qgk" path="res://art/cloud/cloud_f0_3.png" id="4_6istr"]
+[ext_resource type="Texture2D" uid="uid://di41jdelkf75" path="res://art/cloud/cloud_f1_0.png" id="5_sned0"]
+[ext_resource type="Texture2D" uid="uid://dadrvmi0rim5" path="res://art/cloud/cloud_f2_0.png" id="6_h1i0f"]
+[ext_resource type="Texture2D" uid="uid://cdimqx27x00us" path="res://art/cloud/cloud_f3_0.png" id="7_e02us"]
+[ext_resource type="Texture2D" uid="uid://bhtt8oidgcsp6" path="res://art/cloud/cloud_f4_0.png" id="8_xggtc"]
+[ext_resource type="Texture2D" uid="uid://ye27rrr87f7f" path="res://art/cloud/cloud_f5_0.png" id="9_hrn6n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5yo6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gieil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_25pwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3jxll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6istr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gieil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sned0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h1i0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e02us")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xggtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hrn6n")
+}],
+"loop": true,
+"name": &"lightning",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ntams"]
+resource_name = "lightning"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_8ad8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yroaq"]
+_data = {
+"RESET": SubResource("Animation_8ad8v"),
+"lightning": SubResource("Animation_ntams")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6xbbv"]
+radius = 168.074
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ve3va"]
+radius = 755.006
+
+[node name="cloud" type="Node2D"]
+script = ExtResource("1_p3fj2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r5yo6")
+animation = &"lightning"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_yroaq")
+}
+
+[node name="killzone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("CircleShape2D_6xbbv")
+
+[node name="lightning_trigger_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lightning_trigger_zone"]
+shape = SubResource("CircleShape2D_ve3va")
+
+[connection signal="body_entered" from="killzone" to="." method="_on_killzone_body_entered"]
+[connection signal="body_entered" from="lightning_trigger_zone" to="." method="_on_lightning_trigger_zone_body_entered"]
