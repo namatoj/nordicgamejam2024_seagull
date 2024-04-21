@@ -1,18 +1,28 @@
-[gd_scene load_steps=27 format=3 uid="uid://7lussdms2lva"]
+[gd_scene load_steps=35 format=3 uid="uid://7lussdms2lva"]
 
 [ext_resource type="Texture2D" uid="uid://denqh4m7p0md5" path="res://art/tiles/lighthouse/tile_light_house_0.png" id="1_a0l1c"]
+[ext_resource type="Texture2D" uid="uid://rijbvves4eoa" path="res://art/tiles/sea/tile_sea_fancy_0.png" id="1_oxdbt"]
 [ext_resource type="Texture2D" uid="uid://csbhio787q7wg" path="res://art/tiles/landscapeTiles_066.png" id="2_a7frs"]
 [ext_resource type="Texture2D" uid="uid://0e7cprewkm41" path="res://art/tiles/house/tile_house_3.png" id="2_g5g4a"]
 [ext_resource type="Script" path="res://scripts/TileMap.gd" id="2_ka86q"]
 [ext_resource type="Texture2D" uid="uid://djya6caoyfll8" path="res://art/tiles/landscapeTiles_067.png" id="3_j05b2"]
 [ext_resource type="Texture2D" uid="uid://dhy4uwbovrech" path="res://art/tiles/basic/tile_tree_pink_0.png" id="3_p53m8"]
-[ext_resource type="Texture2D" uid="uid://brr7disolpxdm" path="res://art/tiles/basic/tile_0.png" id="4_aktws"]
+[ext_resource type="Texture2D" uid="uid://ceaplqo04vcxr" path="res://art/tiles/sea/tile_sea_fancy_1.png" id="4_8oum2"]
+[ext_resource type="Texture2D" uid="uid://ceqe00g3fdhbq" path="res://art/tiles/basic/tile_0.png" id="4_aktws"]
 [ext_resource type="Texture2D" uid="uid://k1f257wg52dm" path="res://art/tiles/lighthouse/tile_light_house_1.png" id="5_vobns"]
+[ext_resource type="Texture2D" uid="uid://du8w6rf4kxs4u" path="res://art/tiles/sea/tile_sea_fancy_2.png" id="7_fya8o"]
 [ext_resource type="Texture2D" uid="uid://bqsdspusjtld3" path="res://art/tiles/lighthouse/tile_light_house_2.png" id="8_2kklv"]
+[ext_resource type="Texture2D" uid="uid://dcfevn6cfgjky" path="res://art/tiles/sea/tile_sea_fancy_3.png" id="8_5goni"]
 [ext_resource type="Texture2D" uid="uid://usm8vhi6f0kg" path="res://art/tiles/lighthouse/tile_light_house_3.png" id="9_8cnhc"]
 [ext_resource type="Texture2D" uid="uid://1th88d826oo1" path="res://art/tiles/house/tile_house_0.png" id="10_ueniq"]
 [ext_resource type="Texture2D" uid="uid://ct2ccaavayki3" path="res://art/tiles/house/tile_house_1.png" id="11_2nwl8"]
 [ext_resource type="Texture2D" uid="uid://biwmsrdlpnks1" path="res://art/tiles/house/tile_house_2.png" id="12_fpco4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6b7w"]
+texture = ExtResource("1_oxdbt")
+margins = Vector2i(35, 7)
+texture_region_size = Vector2i(130, 175)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i8go4"]
 texture = ExtResource("1_a0l1c")
@@ -26,6 +36,12 @@ margins = Vector2i(35, 0)
 texture_region_size = Vector2i(130, 170)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g8qpk"]
+texture = ExtResource("4_8oum2")
+margins = Vector2i(35, 7)
+texture_region_size = Vector2i(130, 175)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bmede"]
 texture = ExtResource("3_p53m8")
 margins = Vector2i(35, 30)
@@ -36,6 +52,18 @@ texture_region_size = Vector2i(130, 170)
 texture = ExtResource("4_aktws")
 margins = Vector2i(35, 30)
 texture_region_size = Vector2i(130, 170)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nc6mu"]
+texture = ExtResource("7_fya8o")
+margins = Vector2i(35, 7)
+texture_region_size = Vector2i(130, 175)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ertdn"]
+texture = ExtResource("8_5goni")
+margins = Vector2i(35, 7)
+texture_region_size = Vector2i(130, 175)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0qthg"]
@@ -110,6 +138,10 @@ sources/9 = SubResource("TileSetAtlasSource_4eps0")
 sources/10 = SubResource("TileSetAtlasSource_khaps")
 sources/12 = SubResource("TileSetAtlasSource_bmede")
 sources/13 = SubResource("TileSetAtlasSource_ifwmq")
+sources/0 = SubResource("TileSetAtlasSource_i6b7w")
+sources/11 = SubResource("TileSetAtlasSource_g8qpk")
+sources/14 = SubResource("TileSetAtlasSource_nc6mu")
+sources/15 = SubResource("TileSetAtlasSource_ertdn")
 
 [node name="TileMap" type="TileMap"]
 y_sort_enabled = true
