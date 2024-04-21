@@ -5,9 +5,17 @@
 [ext_resource type="Script" path="res://entities/seagull/FlockCenter.gd" id="3_bw7x5"]
 [ext_resource type="PackedScene" uid="uid://bk2ta1wj1xsh7" path="res://scenes/flight_manager.tscn" id="3_fxly1"]
 
-[node name="Player Flock" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_svius"]
+radius = 120.06
+
+[node name="Player Flock" type="CharacterBody2D"]
 z_index = 2
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_brghv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_svius")
 
 [node name="Seagulls" type="Node2D" parent="."]
 
