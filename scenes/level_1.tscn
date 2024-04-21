@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwo5n4s0u5xig"]
+[gd_scene load_steps=16 format=3 uid="uid://dwo5n4s0u5xig"]
 
 [ext_resource type="PackedScene" uid="uid://7lussdms2lva" path="res://scenes/tile_map.tscn" id="1_j1hdi"]
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_kmv8a"]
@@ -23,6 +23,46 @@ shader_parameter/cloudFluffiness = 0.2
 shader_parameter/cloudcover = 1.0
 shader_parameter/cloudalpha = 20.0
 shader_parameter/m = Transform2D(1.6, -1.2, 1.2, 1.6, 0, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hr6mi"]
+
+[sub_resource type="Animation" id="Animation_65xqo"]
+resource_name = "blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.352941, 1, 0.317647, 0.717647), Color(0.352941, 1, 0.317647, 1), Color(0.352941, 1, 0.317647, 0.717647)]
+}
+
+[sub_resource type="Animation" id="Animation_27xoa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.352941, 1, 0.317647, 0.717647)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hakj"]
+_data = {
+"RESET": SubResource("Animation_27xoa"),
+"blink": SubResource("Animation_65xqo")
+}
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_kmv8a")
@@ -78,8 +118,45 @@ offset_bottom = 5067.87
 position = Vector2(-257, 850)
 
 [connection signal="flock_travelled_far" from="Player Flock" to="." method="_on_player_flock_flock_travelled_far"]
+
+[node name="ExitArea" type="Area2D" parent="."]
+position = Vector2(24123, 16633)
+collision_layer = 4
+collision_mask = 4
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ExitArea"]
+offset_top = 32.0
+offset_right = 10000.0
+offset_bottom = 10032.0
+rotation = -0.472984
+color = Color(0.352941, 1, 0.317647, 0.717647)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(110, 115)
+rotation = -0.472984
+shape = SubResource("WorldBoundaryShape2D_hr6mi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ExitArea"]
+libraries = {
+"": SubResource("AnimationLibrary_3hakj")
+}
+autoplay = "blink"
+speed_scale = 2.0
+
+[node name="Label" type="Label" parent="ExitArea"]
+offset_top = 100.0
+offset_right = 1743.0
+offset_bottom = 123.0
+rotation = -0.472984
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/font_size = 100
+text = "GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    GOAL    "
+
 [connection signal="game_over" from="Player Flock" to="." method="_on_player_flock_game_over"]
 [connection signal="place_marker" from="Player Flock" to="." method="_on_player_flock_place_marker"]
 [connection signal="seven_seagulls_in_flock" from="Player Flock" to="." method="_on_player_flock_seven_seagulls_in_flock"]
 [connection signal="escaped_raptor" from="Raptor" to="." method="_on_raptor_escaped_raptor"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
