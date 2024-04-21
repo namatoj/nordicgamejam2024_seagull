@@ -69,3 +69,9 @@ func _on_zeppelin_spawn_plane(pos: Vector2, dir: Vector2):
 	plane.position = pos
 	plane.set_speed(dir)
 	add_child(plane)
+
+
+func _on_exit_area_body_entered(body):
+	print(body.name)
+	if body.name == "Player Flock":
+		_on_player_flock_game_over()
