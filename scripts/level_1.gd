@@ -3,7 +3,7 @@ var trail_marker = preload("res://entities/trail_marker.tscn")
 var loop_summon = preload("res://entities/loop_summon.tscn")
 var plane_scene = preload("res://entities/plane/plane.tscn")
 
-@export var max_trail_length: int = 100
+@export var max_trail_length: int = 70
 var trail_markers = []
 var first_marker_in_loop_index = -1
 var last_marker_in_loop_index = -1
