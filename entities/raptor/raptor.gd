@@ -30,6 +30,7 @@ func _process(_delta):
 	if state == State.Chasing:
 		if target.global_position.distance_to(global_position) > escapeRadius:
 			set_state(State.Roaming)
+			escaped_raptor.emit()
 		if target.global_position.distance_to(global_position) < attackRadius and can_attack:
 			set_state(State.Attacking)
 		else:
@@ -101,11 +102,3 @@ func _on_attack_complete():
 		set_state(State.Chasing)
 	else:
 		set_state(State.Roaming)
-
-
-func _on_detection_radius_body_exited(body):
-	if body.is_in_group('seagulls'):
-		escaped_raptor.emit()
-
-		
-
