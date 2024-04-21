@@ -4,7 +4,7 @@ extends Node
 @onready var parent = get_parent()
 
 @export var speed : float = 500
-@export var rotation_speed = 2
+@export var rotation_speed : float = 2
 
 signal position_reached
 

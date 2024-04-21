@@ -1,6 +1,5 @@
-class_name Raptor
+class_name Zeppelin
 extends Node2D
-signal escaped_raptor
 
 @onready var animation_manager : AnimationManager = $AnimationManager
 @onready var flight_manager : FlightManager = $FlightManager
@@ -8,6 +7,8 @@ signal escaped_raptor
 
 @export var escapeRadius = 1000
 @export var attackRadius = 400
+
+signal spawn_plane(pos: Vector2, dir: Vector2)
 
 var rotation_radians : float = 0
 
@@ -44,13 +45,14 @@ func _process(_delta):
 	animation_manager.look_towards(rotation_radians)
 
 func _on_body_enters_detection_radius(body: Node2D) -> void:
-	if body.is_in_group("raptor_target"):
+	if body.is_in_group("zeppelin_target"):
 		target = body
 		set_state(State.Chasing)
 
 
 func _on_hurt_box_body_entered(body:Node2D):
-	body.queue_free()
+	if body.is_in_group("zeppelin_victim"):
+		body.queue_free()
 
 func _on_roam_position_reached():
 	if state == State.Roaming:
@@ -69,24 +71,19 @@ func set_state(new_state : State):
 
 func start_attack():
 	can_attack = false
-	var attack_target = estimate_target_position()
+	var attack_target = target.global_position #estimate_target_position()
 	raycast.target_position = attack_target - global_position
-	flight_manager.target_pos = attack_target
-	var tween = get_tree().create_tween()
-	# Slow down, then speed up quickly, fly for a bit, then slow down again
-	tween.tween_property(flight_manager, "rotation_speed", 4, 0.01)
-	tween.tween_property(flight_manager, "speed", 50, 0.5)
-	tween.tween_interval(0.75)
-	tween.tween_property(flight_manager, "rotation_speed", 0.25, 0.01)
-	tween.tween_interval(0.25)
-	tween.tween_property(flight_manager, "speed", 1400, 0.1)
-	tween.tween_interval(0.5)
-	tween.tween_property(flight_manager, "speed", 100, 1)
-	tween.tween_property(flight_manager, "rotation_speed", 2, 0.01)
-	tween.tween_interval(0.5)
-	tween.tween_property(flight_manager, "speed", 400, 0.1)
-	tween.tween_interval(0.5)
-	tween.tween_callback(_on_attack_complete)
+	
+	spawn_plane.emit(global_position, global_position.direction_to(attack_target))
+
+	var timer = Timer.new()
+	timer.wait_time = 5
+	timer.one_shot = true
+	timer.timeout.connect(_on_attack_complete)
+	add_child(timer)
+	timer.start()
+
+
 
 func estimate_target_position() -> Vector2:
 	var target_velocity = target.get_speed()
@@ -101,11 +98,3 @@ func _on_attack_complete():
 		set_state(State.Chasing)
 	else:
 		set_state(State.Roaming)
-
-
-func _on_detection_radius_body_exited(body):
-	if body.is_in_group('seagulls'):
-		escaped_raptor.emit()
-
-		
-
