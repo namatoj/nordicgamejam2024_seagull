@@ -27,7 +27,6 @@ func _ready():
 	last_position = position
 	update_flock_center()
 	flight_manager.target_pos = target
-	print(position)
 
 
 func _process(delta):
