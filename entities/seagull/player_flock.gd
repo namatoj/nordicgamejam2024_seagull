@@ -115,3 +115,5 @@ func get_speed():
 # 		# Optional: Update the raycast's target position if used for other functionalities
 # 		seagull.raycast.target_position = seagull.velocity
 
+func position_reached():
+	pass

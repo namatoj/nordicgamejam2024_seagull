@@ -19,7 +19,7 @@ func _process(delta):
 	var velocity = Vector2.from_angle(parent.rotation_radians) * speed
 	parent.position += velocity * delta
 	if parent.global_position.distance_to(target_pos) < target_sensitivity:
-		emit_signal("position_reached")
+		parent.position_reached()
 
 		
 

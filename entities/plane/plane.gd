@@ -21,7 +21,7 @@ var can_attack = true
 var spawn_direction : float = 0
 
 func _ready():
-	_on_roam_position_reached()
+	set_new_roam_target()
 
 func _process(_delta):
 	if target:
@@ -63,16 +63,20 @@ func _on_hurt_box_body_entered(body:Node2D):
 	if body.is_in_group("plane_victim"):
 		body.queue_free()
 
-func _on_roam_position_reached():
+
+func position_reached():
 	if state == State.Roaming:
-		var roam_range = 500
-		var new_roam_target = Vector2(roam_range, 0).rotated(randf_range(-PI/4, PI/4))
-		flight_manager.target_pos = global_position + new_roam_target
+		set_new_roam_target()
+
+func set_new_roam_target():
+	var roam_range = 500
+	var new_roam_target = Vector2(roam_range, 0).rotated(randf_range(-PI/4, PI/4))
+	flight_manager.target_pos = global_position + new_roam_target
 
 func set_state(new_state : State):
 	state = new_state
 	if state == State.Roaming:
-		_on_roam_position_reached()
+		set_new_roam_target()
 	if state == State.GoingHome:
 		add_to_group("zeppelin_victim")
 		flight_manager.target_pos = zeppelin_target.global_position
