@@ -13,7 +13,7 @@ radius = 131.35
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2nof"]
 radius = 120.06
 
-[node name="Zeppelin" type="CharacterBody2D" groups=["zeppelins"]]
+[node name="Zeppelin" type="CharacterBody2D" groups=["killable_by_loop", "zeppelins"]]
 script = ExtResource("1_rgfa5")
 attackRadius = 600
 

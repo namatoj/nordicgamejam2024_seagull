@@ -13,7 +13,7 @@ radius = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cuht3"]
 radius = 50.0
 
-[node name="Plane" type="CharacterBody2D"]
+[node name="Plane" type="CharacterBody2D" groups=["killable_by_loop", "plane"]]
 script = ExtResource("1_nj7pc")
 
 [node name="AnimationManager" parent="." instance=ExtResource("2_osdub")]
