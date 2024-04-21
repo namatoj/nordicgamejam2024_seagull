@@ -121,6 +121,7 @@ func handle_reached_goal(goal):
 	if reached_goal in current_goals:
 		current_goals[reached_goal] = true
 		$HUD.get_child(0).set_current_goals(current_goals)
+	GameStats.goal_status = current_goals
 
 func _on_zeppelin_spawn_plane(pos: Vector2, dir: Vector2):
 	var plane = plane_scene.instantiate()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/seagull/player_flock.gd" id="1_brghv"]
 [ext_resource type="PackedScene" uid="uid://b4cqwo2ebvhwp" path="res://entities/seagull/seagull.tscn" id="2_ft5c6"]
 [ext_resource type="PackedScene" uid="uid://bk2ta1wj1xsh7" path="res://scenes/flight_manager.tscn" id="3_fxly1"]
-[ext_resource type="PackedScene" uid="uid://bds6w0qpko4hs" path="res://scenes/cpu_particles_2d.tscn" id="4_xlnjm"]
+[ext_resource type="PackedScene" path="res://scenes/cpu_particles_2d.tscn" id="4_xlnjm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svius"]
 radius = 120.06
