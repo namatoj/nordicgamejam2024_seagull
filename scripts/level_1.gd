@@ -1,8 +1,9 @@
 extends Node2D
 var trail_marker = preload("res://entities/trail_marker.tscn")
 var loop_summon = preload("res://entities/loop_summon.tscn")
+var plane_scene = preload("res://entities/plane/plane.tscn")
 
-@export var max_trail_length = 100
+@export var max_trail_length: int = 100
 var trail_markers = []
 var first_marker_in_loop_index = -1
 var last_marker_in_loop_index = -1
@@ -10,7 +11,8 @@ var last_marker_in_loop_index = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	for zeppelin in get_tree().get_nodes_in_group("zeppelins"):
+		zeppelin.spawn_plane.connect(_on_zeppelin_spawn_plane)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,3 +63,9 @@ func _on_picked_up_seagull():
 
 func _on_player_flock_game_over():
 	get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+
+func _on_zeppelin_spawn_plane(pos: Vector2, dir: Vector2):
+	var plane = plane_scene.instantiate()
+	plane.position = pos
+	plane.set_speed(dir)
+	add_child(plane)
