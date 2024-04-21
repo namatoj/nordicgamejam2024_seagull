@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0boa"]
 radius = 25.0
 
-[node name="Seagull" type="CharacterBody2D" groups=["plane_target", "plane_victim", "raptor_target", "zeppelin_target", "zeppelin_victim"]]
+[node name="Seagull" type="CharacterBody2D" groups=["plane_target", "plane_victim", "raptor_target", "raptor_victim", "zeppelin_target", "zeppelin_victim"]]
 script = ExtResource("1_8p7du")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

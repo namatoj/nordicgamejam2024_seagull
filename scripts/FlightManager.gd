@@ -11,8 +11,11 @@ signal position_reached
 var target_sensitivity = 20
 
 var target_pos : Vector2 = Vector2.ZERO # Global
+var disabled = false
 
-func _process(delta):		
+func _process(delta):
+	if disabled:
+		return
 	var angle_to_target = parent.global_position.direction_to(target_pos).angle()
 	parent.rotation_radians = map_radians_to_circle(rotate_toward(parent.rotation_radians, angle_to_target, delta * rotation_speed))
 

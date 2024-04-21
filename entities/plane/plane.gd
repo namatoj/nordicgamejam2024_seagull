@@ -13,7 +13,7 @@ var rotation_radians : float = 0
 var target : Node2D
 var zeppelin_target: Node2D
 
-enum State {Roaming, GoingHome, Attacking}
+enum State {Roaming, GoingHome, Attacking, Dying}
 
 var state : State = State.Roaming
 
@@ -46,7 +46,8 @@ func _process(_delta):
 
 
 
-	animation_manager.look_towards(rotation_radians)
+	if state != State.Dying:
+		animation_manager.look_towards(rotation_radians)
 
 func _on_body_enters_detection_radius(body: Node2D) -> void:
 	if body.is_in_group("plane_target"):
@@ -61,7 +62,7 @@ func _on_body_enters_detection_radius(body: Node2D) -> void:
 
 func _on_hurt_box_body_entered(body:Node2D):
 	if body.is_in_group("plane_victim"):
-		body.queue_free()
+		body.die()
 
 
 func position_reached():
@@ -74,6 +75,8 @@ func set_new_roam_target():
 	flight_manager.target_pos = global_position + new_roam_target
 
 func set_state(new_state : State):
+	if state == State.Dying:
+		return
 	state = new_state
 	if state == State.Roaming:
 		set_new_roam_target()
@@ -124,4 +127,14 @@ func set_speed(dir: Vector2):
 	rotation_radians = dir.angle()
 
 func die():
+	set_state(State.Dying)
+	flight_manager.disabled = true
+	var tween := get_tree().create_tween().set_loops(32)
+	tween.set_parallel(true)
+	tween.tween_callback(animation_manager.rotate_animation)
+	tween.tween_interval(0.075)
+
+	var tween2 := get_tree().create_tween()
+	tween2.tween_property(self, "scale", Vector2(0, 0), 2.5)
+	await tween2.finished
 	queue_free()
