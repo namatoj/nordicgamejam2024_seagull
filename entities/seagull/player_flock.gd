@@ -4,6 +4,7 @@ signal place_marker(position, rotation)
 signal game_over
 signal seven_seagulls_in_flock
 signal flock_travelled_far
+signal flock_position
 
 @onready var seagulls : Node2D = $Seagulls
 @onready var raycast: RayCast2D = $RayCast2D
@@ -38,6 +39,8 @@ func _process(delta):
 	update_seagulls()
 	update_flock_center()
 	update_distance_travelled()
+	
+	flock_position.emit(position)
 	
 	if should_add_trail_marker():
 		place_marker.emit(position, rotation_radians)

@@ -83,7 +83,7 @@ _data = {
 "pulsate": SubResource("Animation_ibjlm")
 }
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="SittingSeagull" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cfdv4")
