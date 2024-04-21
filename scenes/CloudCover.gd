@@ -14,7 +14,7 @@ func _on_body_entered(body:Node2D):
 	if body.has_method("die"):
 		body.die()
 	else:
-		queue_free()
+		body.queue_free()
 
 
 func _ready():
