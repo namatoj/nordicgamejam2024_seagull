@@ -57,7 +57,7 @@ func update_seagulls():
 	if seagulls.get_child_count() == 0:
 		game_over.emit()
 		return
-	if seagulls.get_child_count() == 7:
+	if seagulls.get_child_count() >= 7:
 		seven_seagulls_in_flock.emit()
 		
 	for seagull in seagulls.get_children():

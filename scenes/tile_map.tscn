@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://7lussdms2lva"]
+[gd_scene load_steps=45 format=3 uid="uid://7lussdms2lva"]
 
 [ext_resource type="Texture2D" uid="uid://denqh4m7p0md5" path="res://art/tiles/lighthouse/tile_light_house_0.png" id="1_a0l1c"]
 [ext_resource type="Texture2D" uid="uid://rijbvves4eoa" path="res://art/tiles/sea/tile_sea_fancy_0.png" id="1_oxdbt"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cxgnl4n17pnpw" path="res://art/tiles/rubber_ducky/tile_rubber_ducky_2.png" id="11_c5t0s"]
 [ext_resource type="Texture2D" uid="uid://dvv6aeo3t7qop" path="res://art/tiles/rubber_ducky/tile_rubber_ducky_3.png" id="12_6rvrd"]
 [ext_resource type="Texture2D" uid="uid://biwmsrdlpnks1" path="res://art/tiles/house/tile_house_2.png" id="12_fpco4"]
+[ext_resource type="PackedScene" uid="uid://b7askbjtprtsp" path="res://entities/seagull/sitting_seagull.tscn" id="14_rmciv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6b7w"]
 texture = ExtResource("1_oxdbt")
@@ -100,6 +101,11 @@ margins = Vector2i(35, 0)
 texture_region_size = Vector2i(130, 170)
 0:0/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_csf78"]
+resource_name = "SittingSeagull"
+scenes/1/scene = ExtResource("14_rmciv")
+scenes/1/display_placeholder = ExtResource("14_rmciv")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xnie4"]
 texture = ExtResource("2_a7frs")
 margins = Vector2i(1, 1)
@@ -174,6 +180,7 @@ sources/16 = SubResource("TileSetAtlasSource_bmh3w")
 sources/17 = SubResource("TileSetAtlasSource_wppwu")
 sources/18 = SubResource("TileSetAtlasSource_stuwi")
 sources/19 = SubResource("TileSetAtlasSource_onlbl")
+sources/22 = SubResource("TileSetScenesCollectionSource_csf78")
 
 [node name="TileMap" type="TileMap"]
 y_sort_enabled = true
