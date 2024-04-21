@@ -81,7 +81,7 @@ func set_state(new_state : State):
 	if state == State.Roaming:
 		set_new_roam_target()
 	if state == State.GoingHome:
-		add_to_group("zeppelin_victim")
+		add_to_group("plane")
 		flight_manager.target_pos = zeppelin_target.global_position
 	if state == State.Attacking:
 		start_attack()

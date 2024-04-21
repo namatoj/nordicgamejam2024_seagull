@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c424xis6gej4s"]
+[gd_scene load_steps=6 format=3 uid="uid://c424xis6gej4s"]
 
 [ext_resource type="Script" path="res://entities/seagull/player_flock.gd" id="1_brghv"]
 [ext_resource type="PackedScene" uid="uid://b4cqwo2ebvhwp" path="res://entities/seagull/seagull.tscn" id="2_ft5c6"]
 [ext_resource type="PackedScene" uid="uid://bk2ta1wj1xsh7" path="res://scenes/flight_manager.tscn" id="3_fxly1"]
+[ext_resource type="PackedScene" uid="uid://bds6w0qpko4hs" path="res://scenes/cpu_particles_2d.tscn" id="4_xlnjm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svius"]
 radius = 120.06
@@ -40,3 +41,13 @@ position = Vector2(20, 90)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("4_xlnjm")]
+lifetime = 2.0
+lifetime_randomness = 0.2
+
+[node name="CPUParticles2D2" parent="." instance=ExtResource("4_xlnjm")]
+lifetime = 8.0
+lifetime_randomness = 0.2
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
