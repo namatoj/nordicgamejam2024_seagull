@@ -22,3 +22,4 @@ func _on_killzone_body_entered(body):
 	# Hurt the player
 	if body.is_in_group("raptor_victim"):
 		body.die()
+
