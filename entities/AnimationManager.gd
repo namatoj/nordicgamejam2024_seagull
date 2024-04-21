@@ -14,7 +14,7 @@ func _ready():
 		sprite_frames.add_animation(dir)
 		sprite_frames.add_frame(dir, sprite, 1)
 	animated_sprite.frames = sprite_frames
-	animated_sprite.animation = "0"
+	animated_sprite.animation = str(randi_range(0, 15))
 
 
 
@@ -28,3 +28,9 @@ func look_towards(radians):
 
 func map_radians_to_circle(angle):
 	return fposmod(angle, 2 * PI)
+
+func rotate_animation():
+	if animated_sprite.animation == "15":
+		animated_sprite.animation = "0"
+	else:
+		animated_sprite.animation = str(int(str(animated_sprite.animation)) + 1)

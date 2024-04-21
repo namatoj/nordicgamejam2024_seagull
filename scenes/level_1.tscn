@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7askbjtprtsp" path="res://entities/seagull/sitting_seagull.tscn" id="5_5uwll"]
 [ext_resource type="Script" path="res://scenes/CloudCover.gd" id="6_51nwp"]
 [ext_resource type="PackedScene" uid="uid://bfwmrrdbkprxv" path="res://scenes/side_cloud.tscn" id="6_n8iy7"]
-[ext_resource type="PackedScene" uid="uid://ddgtinyo4081h" path="res://scenes/hud.tscn" id="8_p2l40"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="8_p2l40"]
 [ext_resource type="PackedScene" uid="uid://dh58n2abcjcg6" path="res://entities/zeppelin/zeppelin.tscn" id="9_84i0r"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8tsim"]
