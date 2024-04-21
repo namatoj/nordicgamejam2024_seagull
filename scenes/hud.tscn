@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddgtinyo4081h"]
+[gd_scene load_steps=4 format=3 uid="uid://ddgtinyo4081h"]
 
 [ext_resource type="PackedScene" uid="uid://df2tskmq5p2mh" path="res://entities/hud/goal.tscn" id="1_k2fad"]
 [ext_resource type="Script" path="res://scenes/GoalContainer.gd" id="1_kro8c"]
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_uh67j"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_uh67j")
 
 [node name="GoalContainer" type="Control" parent="."]
 layout_mode = 3
@@ -38,3 +40,12 @@ offset_top = 144.0
 offset_right = -512.0
 offset_bottom = 144.0
 text = "Fly into the night"
+
+[node name="DistanceCounter" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 134.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Distance to exit:"
