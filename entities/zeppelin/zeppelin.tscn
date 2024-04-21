@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh58n2abcjcg6"]
+
+[ext_resource type="Script" path="res://entities/zeppelin/zeppelin.gd" id="1_rgfa5"]
+[ext_resource type="PackedScene" uid="uid://byk8xdsw26qb6" path="res://scenes/animation_manager.tscn" id="2_6rbrd"]
+[ext_resource type="PackedScene" uid="uid://bk2ta1wj1xsh7" path="res://scenes/flight_manager.tscn" id="3_s8qd1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_snjd4"]
+radius = 700.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghyjh"]
+radius = 131.35
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2nof"]
+radius = 120.06
+
+[node name="Zeppelin" type="CharacterBody2D" groups=["zeppelins"]]
+script = ExtResource("1_rgfa5")
+attackRadius = 600
+
+[node name="AnimationManager" parent="." instance=ExtResource("2_6rbrd")]
+scale = Vector2(4, 4)
+sprite_name = "zeppelin"
+
+[node name="DetectionRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
+shape = SubResource("CircleShape2D_snjd4")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_ghyjh")
+
+[node name="FlightManager" parent="." instance=ExtResource("3_s8qd1")]
+speed = 100.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u2nof")
+
+[connection signal="body_entered" from="DetectionRadius" to="." method="_on_body_enters_detection_radius"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
