@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://entities/seagull/player_flock.gd" id="1_brghv"]
 [ext_resource type="PackedScene" uid="uid://b4cqwo2ebvhwp" path="res://entities/seagull/seagull.tscn" id="2_ft5c6"]
-[ext_resource type="Script" path="res://entities/seagull/FlockCenter.gd" id="3_bw7x5"]
 [ext_resource type="PackedScene" uid="uid://bk2ta1wj1xsh7" path="res://scenes/flight_manager.tscn" id="3_fxly1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svius"]
@@ -34,7 +33,6 @@ position = Vector2(20, 90)
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="FlockCenter" type="Marker2D" parent="."]
-script = ExtResource("3_bw7x5")
 
 [node name="FlightManager" parent="." instance=ExtResource("3_fxly1")]
 
