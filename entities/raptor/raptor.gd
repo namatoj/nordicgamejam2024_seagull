@@ -1,5 +1,6 @@
 class_name Raptor
 extends Node2D
+signal escaped_raptor
 
 @onready var animation_manager : AnimationManager = $AnimationManager
 @onready var flight_manager : FlightManager = $FlightManager
@@ -29,6 +30,7 @@ func _process(_delta):
 	if state == State.Chasing:
 		if target.global_position.distance_to(global_position) > escapeRadius:
 			set_state(State.Roaming)
+			escaped_raptor.emit()
 		if target.global_position.distance_to(global_position) < attackRadius and can_attack:
 			set_state(State.Attacking)
 		else:

@@ -7,10 +7,41 @@ var plane_scene = preload("res://entities/plane/plane.tscn")
 var trail_markers = []
 var first_marker_in_loop_index = -1
 var last_marker_in_loop_index = -1
+var total_number_of_loops = 0
 
+enum Goal {
+	GROW_THE_FLOCK_TO_7,
+	TAVEL_FAR,
+	ESCAPE_RAPTOR,
+	DO_FIVE_LOOPS,
+}
+
+var easy_goals = [
+	Goal.GROW_THE_FLOCK_TO_7,
+	Goal.DO_FIVE_LOOPS
+]
+var medium_goals = [
+	Goal.TAVEL_FAR
+]
+var hard_goals = [
+	Goal.ESCAPE_RAPTOR
+]
+var current_goals = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var easy_goal = Goal.keys()[easy_goals.pick_random()].capitalize()
+	var medium_goal = Goal.keys()[medium_goals.pick_random()].capitalize()
+	var hard_goal = Goal.keys()[hard_goals.pick_random()].capitalize()
+	
+	current_goals = {
+		easy_goal: false,
+		medium_goal: false,
+		hard_goal: false
+	}
+	
+	$HUD.get_child(0).set_current_goals(current_goals)
+
 	for zeppelin in get_tree().get_nodes_in_group("zeppelins"):
 		zeppelin.spawn_plane.connect(_on_zeppelin_spawn_plane)
 
@@ -31,6 +62,13 @@ func _process(delta):
 		for trail_marker in trail_markers:
 			trail_marker.queue_free()
 		trail_markers.clear()
+		
+		total_number_of_loops += 1
+		
+		if total_number_of_loops >= 5:
+			_on_many_loops_goal()
+		
+		
 	
 func trail_has_loop():
 	for i in len(trail_markers) - 1:
@@ -63,6 +101,26 @@ func _on_picked_up_seagull():
 
 func _on_player_flock_game_over():
 	get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+
+
+func _on_player_flock_seven_seagulls_in_flock():
+	handle_reached_goal(Goal.GROW_THE_FLOCK_TO_7)
+
+func _on_player_flock_flock_travelled_far():
+	handle_reached_goal(Goal.TAVEL_FAR)
+		
+func _on_many_loops_goal():
+	handle_reached_goal(Goal.DO_FIVE_LOOPS)
+	
+func _on_raptor_escaped_raptor():
+	handle_reached_goal(Goal.ESCAPE_RAPTOR)
+
+		
+func handle_reached_goal(goal):
+	var reached_goal = Goal.keys()[goal].capitalize()
+	if reached_goal in current_goals:
+		current_goals[reached_goal] = true
+		$HUD.get_child(0).set_current_goals(current_goals)
 
 func _on_zeppelin_spawn_plane(pos: Vector2, dir: Vector2):
 	var plane = plane_scene.instantiate()

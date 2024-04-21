@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddgtinyo4081h"]
+
+[ext_resource type="PackedScene" uid="uid://df2tskmq5p2mh" path="res://entities/hud/goal.tscn" id="1_k2fad"]
+[ext_resource type="Script" path="res://scenes/GoalContainer.gd" id="1_kro8c"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="GoalContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+size_flags_horizontal = 2
+script = ExtResource("1_kro8c")
+
+[node name="Goal1" parent="GoalContainer" instance=ExtResource("1_k2fad")]
+layout_mode = 1
+offset_left = -512.0
+offset_top = 16.0
+offset_right = -512.0
+offset_bottom = 16.0
+text = "Collect 5 seagulls"
+
+[node name="Goal2" parent="GoalContainer" instance=ExtResource("1_k2fad")]
+layout_mode = 1
+offset_left = -512.0
+offset_top = 80.0
+offset_right = -512.0
+offset_bottom = 80.0
+checked = true
+text = "Kill the raptor"
+
+[node name="Goal3" parent="GoalContainer" instance=ExtResource("1_k2fad")]
+layout_mode = 1
+offset_left = -512.0
+offset_top = 144.0
+offset_right = -512.0
+offset_bottom = 144.0
+text = "Fly into the night"

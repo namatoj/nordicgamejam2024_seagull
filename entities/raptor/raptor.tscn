@@ -30,5 +30,7 @@ shape = SubResource("CircleShape2D_ghyjh")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
+[connection signal="area_exited" from="DetectionRadius" to="." method="_on_detection_radius_area_exited"]
 [connection signal="body_entered" from="DetectionRadius" to="." method="_on_body_enters_detection_radius"]
+[connection signal="body_exited" from="DetectionRadius" to="." method="_on_detection_radius_body_exited"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

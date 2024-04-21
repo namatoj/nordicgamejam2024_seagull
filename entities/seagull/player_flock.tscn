@@ -18,16 +18,16 @@ shape = SubResource("CircleShape2D_svius")
 
 [node name="Seagulls" type="Node2D" parent="."]
 
-[node name="Seagull4" parent="Seagulls" instance=ExtResource("2_ft5c6")]
+[node name="Seagull4" parent="Seagulls" groups=["seagulls"] instance=ExtResource("2_ft5c6")]
 position = Vector2(14, -79)
 
-[node name="Seagull" parent="Seagulls" instance=ExtResource("2_ft5c6")]
+[node name="Seagull" parent="Seagulls" groups=["seagulls"] instance=ExtResource("2_ft5c6")]
 position = Vector2(-68, 1)
 
-[node name="Seagull2" parent="Seagulls" instance=ExtResource("2_ft5c6")]
+[node name="Seagull2" parent="Seagulls" groups=["seagulls"] instance=ExtResource("2_ft5c6")]
 position = Vector2(82, 2)
 
-[node name="Seagull3" parent="Seagulls" instance=ExtResource("2_ft5c6")]
+[node name="Seagull3" parent="Seagulls" groups=["seagulls"] instance=ExtResource("2_ft5c6")]
 position = Vector2(20, 90)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

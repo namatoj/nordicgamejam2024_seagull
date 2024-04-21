@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://df2tskmq5p2mh"]
+
+[ext_resource type="Script" path="res://entities/hud/goal.gd" id="1_0e7jc"]
+[ext_resource type="Texture2D" uid="uid://dcmmavlbbs7de" path="res://art/uncheckedCheckbox.png" id="1_e1ke5"]
+
+[node name="Goal" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0e7jc")
+
+[node name="Checkbox" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_e1ke5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 1.0
+offset_right = 204.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "Sample Text"
