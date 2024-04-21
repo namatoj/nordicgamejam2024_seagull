@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://coiefho055fjs"]
+[gd_scene load_steps=3 format=3 uid="uid://coiefho055fjs"]
 
 [ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="1_5xutp"]
+[ext_resource type="Texture2D" uid="uid://bd750cf63gu8d" path="res://art/background/wtf_HD.png" id="2_3kpvg"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -11,22 +12,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5xutp")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 560.0
-offset_top = 333.0
-offset_right = 606.0
-offset_bottom = 364.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_3kpvg")
+
+[node name="StartButton" type="Button" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 702.0
+offset_top = 753.0
+offset_right = 1590.0
+offset_bottom = 942.0
 theme_override_font_sizes/font_size = 50
 text = "Start"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 306.0
-offset_top = 78.0
-offset_right = 891.0
-offset_bottom = 243.0
-theme_override_font_sizes/font_size = 120
-text = "What the Flock"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
