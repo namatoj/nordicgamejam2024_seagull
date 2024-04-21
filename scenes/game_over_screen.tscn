@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpwyjhnbkjxfs"]
 
-[ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="1_p51ab"]
+[ext_resource type="Script" path="res://scripts/GameOverScreen.gd" id="1_flv60"]
 
 [node name="Game Over" type="Control"]
 layout_mode = 3
@@ -9,28 +9,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_p51ab")
+script = ExtResource("1_flv60")
 
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 394.0
-offset_top = 561.0
-offset_right = 624.0
-offset_bottom = 638.0
-theme_override_font_sizes/font_size = 50
-text = "Try again"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 306.0
-offset_top = 78.0
-offset_right = 891.0
-offset_bottom = 243.0
-theme_override_font_sizes/font_size = 120
-text = "Neat!
-"
-
-[node name="Label2" type="Label" parent="."]
+[node name="GoalsLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 288.0
 offset_top = 234.0
@@ -45,5 +26,24 @@ Time survived: 2:12
 
 Total score: 4100
 "
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 78.0
+offset_right = 891.0
+offset_bottom = 243.0
+theme_override_font_sizes/font_size = 120
+text = "Neat!
+"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 623.0
+offset_right = 625.0
+offset_bottom = 700.0
+theme_override_font_sizes/font_size = 50
+text = "Try again"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
