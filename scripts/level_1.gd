@@ -26,7 +26,7 @@ var medium_goals = [
 var hard_goals = [
 	Goal.ESCAPE_RAPTOR
 ]
-var currentGoals = {}
+var current_goals = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,13 +34,13 @@ func _ready():
 	var medium_goal = Goal.keys()[medium_goals.pick_random()].capitalize()
 	var hard_goal = Goal.keys()[hard_goals.pick_random()].capitalize()
 	
-	currentGoals = {
+	current_goals = {
 		easy_goal: false,
 		medium_goal: false,
 		hard_goal: false
 	}
 	
-	$HUD.get_child(0).currentGoals = currentGoals
+	$HUD.get_child(0).set_current_goals(current_goals)
 
 	for zeppelin in get_tree().get_nodes_in_group("zeppelins"):
 		zeppelin.spawn_plane.connect(_on_zeppelin_spawn_plane)
@@ -118,9 +118,9 @@ func _on_raptor_escaped_raptor():
 		
 func handle_reached_goal(goal):
 	var reached_goal = Goal.keys()[goal].capitalize()
-	if reached_goal in currentGoals:
-		currentGoals[reached_goal] = true
-		$HUD.get_child(0).currentGoals = currentGoals
+	if reached_goal in current_goals:
+		current_goals[reached_goal] = true
+		$HUD.get_child(0).set_current_goals(current_goals)
 
 func _on_zeppelin_spawn_plane(pos: Vector2, dir: Vector2):
 	var plane = plane_scene.instantiate()

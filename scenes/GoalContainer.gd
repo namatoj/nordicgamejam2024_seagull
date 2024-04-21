@@ -1,25 +1,24 @@
 extends Control
 
-var currentGoals = [[false, 'Sample 1'], 
+var current_goals = [[false, 'Sample 1'], 
 [false, 'Sample 2'],
-[true, 'Sample 3']]
+[false, 'Sample 3']]
+
+var goals = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	goals = [$Goal1, $Goal2, $Goal3]
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func set_current_goals(new_current_goals):
+	current_goals = new_current_goals
+
 	var i = 0
-	var goals = [
-		$Goal1, $Goal2, $Goal3
-	]
-	
-	for key in currentGoals:
-		goals[i].checked = currentGoals[key]
-		goals[i].text = key
+	for key in current_goals:
+		if goals != null:
+			goals[i].set_checked_status(current_goals[key])
+			goals[i].set_text(key)
 		i += 1
-		
 
 

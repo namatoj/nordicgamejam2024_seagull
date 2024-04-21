@@ -7,10 +7,12 @@ extends Control
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func set_checked_status(status):
+	checked = status
 	if checked:
 		$Checkbox.texture = load("res://art/checkedCheckbox.png")
+	else:
+		$Checkbox.texture = load("res://art/uncheckedCheckbox.png")
+	
+func set_text(text):
 	$Label.text = text
-
