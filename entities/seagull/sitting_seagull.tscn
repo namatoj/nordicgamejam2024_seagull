@@ -1,15 +1,100 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7askbjtprtsp"]
+[gd_scene load_steps=6 format=3 uid="uid://djx2ealoyu1c1"]
+
+[ext_resource type="PackedScene" uid="uid://byk8xdsw26qb6" path="res://scenes/animation_manager.tscn" id="1_wywd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cfdv4"]
 size = Vector2(40, 40)
+
+[sub_resource type="Animation" id="Animation_ibjlm"]
+resource_name = "pulsate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationManager:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(2.5, 2.5), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationManager")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"rotate_animation"
+}, {
+"args": [],
+"method": &"rotate_animation"
+}, {
+"args": [],
+"method": &"rotate_animation"
+}, {
+"args": [],
+"method": &"rotate_animation"
+}, {
+"args": [],
+"method": &"rotate_animation"
+}, {
+"args": [],
+"method": &"rotate_animation"
+}, {
+"args": [],
+"method": &"rotate_animation"
+}, {
+"args": [],
+"method": &"rotate_animation"
+}, {
+"args": [],
+"method": &"rotate_animation"
+}, {
+"args": [],
+"method": &"rotate_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gs1uk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationManager:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u4qgm"]
+_data = {
+"RESET": SubResource("Animation_gs1uk"),
+"pulsate": SubResource("Animation_ibjlm")
+}
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cfdv4")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+[node name="AnimationManager" parent="." instance=ExtResource("1_wywd6")]
+scale = Vector2(2, 2)
+sprite_name = "sitting_seagull"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u4qgm")
+}
+autoplay = "pulsate"
+speed_scale = 0.5
