@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/TileMap.gd" id="2_ka86q"]
 [ext_resource type="Texture2D" uid="uid://djya6caoyfll8" path="res://art/tiles/landscapeTiles_067.png" id="3_j05b2"]
 [ext_resource type="Texture2D" uid="uid://dhy4uwbovrech" path="res://art/tiles/basic/tile_tree_pink_0.png" id="3_p53m8"]
-[ext_resource type="Texture2D" uid="uid://ceqe00g3fdhbq" path="res://art/tiles/basic/tile_0.png" id="4_aktws"]
+[ext_resource type="Texture2D" uid="uid://brr7disolpxdm" path="res://art/tiles/basic/tile_0.png" id="4_aktws"]
 [ext_resource type="Texture2D" uid="uid://k1f257wg52dm" path="res://art/tiles/lighthouse/tile_light_house_1.png" id="5_vobns"]
 [ext_resource type="Texture2D" uid="uid://bqsdspusjtld3" path="res://art/tiles/lighthouse/tile_light_house_2.png" id="8_2kklv"]
 [ext_resource type="Texture2D" uid="uid://usm8vhi6f0kg" path="res://art/tiles/lighthouse/tile_light_house_3.png" id="9_8cnhc"]

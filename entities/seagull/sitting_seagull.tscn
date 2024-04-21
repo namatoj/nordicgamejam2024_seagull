@@ -1,9 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://djx2ealoyu1c1"]
+[gd_scene load_steps=6 format=3 uid="uid://b7askbjtprtsp"]
 
 [ext_resource type="PackedScene" uid="uid://byk8xdsw26qb6" path="res://scenes/animation_manager.tscn" id="1_wywd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cfdv4"]
 size = Vector2(40, 40)
+
+[sub_resource type="Animation" id="Animation_gs1uk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationManager:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_ibjlm"]
 resource_name = "pulsate"
@@ -60,21 +75,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"rotate_animation"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_gs1uk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationManager:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, 2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u4qgm"]

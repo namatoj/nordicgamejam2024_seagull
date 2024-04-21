@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://c424xis6gej4s" path="res://entities/seagull/player_flock.tscn" id="2_0kmc0"]
 [ext_resource type="PackedScene" uid="uid://dback3wr4uenj" path="res://entities/raptor/raptor.tscn" id="3_fhjpq"]
 [ext_resource type="Shader" path="res://shaders/clouds.gdshader" id="5_4duxn"]
-[ext_resource type="PackedScene" uid="uid://djx2ealoyu1c1" path="res://entities/seagull/sitting_seagull.tscn" id="5_5uwll"]
+[ext_resource type="PackedScene" uid="uid://b7askbjtprtsp" path="res://entities/seagull/sitting_seagull.tscn" id="5_5uwll"]
 [ext_resource type="Script" path="res://scenes/CloudCover.gd" id="6_51nwp"]
 [ext_resource type="PackedScene" uid="uid://bfwmrrdbkprxv" path="res://scenes/side_cloud.tscn" id="6_n8iy7"]
-[ext_resource type="PackedScene" uid="uid://ddgtinyo4081h" path="res://scenes/hud.tscn" id="8_p2l40"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="8_p2l40"]
 [ext_resource type="PackedScene" uid="uid://dh58n2abcjcg6" path="res://entities/zeppelin/zeppelin.tscn" id="9_84i0r"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8tsim"]
