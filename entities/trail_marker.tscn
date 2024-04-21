@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dti3ogbl3dmcj"]
+[gd_scene load_steps=3 format=3 uid="uid://wj7ebshg8h71"]
 
-[ext_resource type="Texture2D" path="res://art/arrow_marker.png" id="1_tkinv"]
+[ext_resource type="Texture2D" uid="uid://c5ys8hjs8nkct" path="res://art/arrow_marker.png" id="1_tkinv"]
 [ext_resource type="Script" path="res://entities/trail_marker.gd" id="2_5ukev"]
 
 [node name="Trail Marker" type="Sprite2D"]

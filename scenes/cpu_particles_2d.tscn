@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bds6w0qpko4hs"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+amount = 500
+lifetime = 5.0
+lifetime_randomness = 0.59
+emission_shape = 2
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+angular_velocity_max = 10.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0

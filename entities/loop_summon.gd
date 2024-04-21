@@ -5,6 +5,7 @@ var polygon_points = []
 
 @onready var label_position: Node2D = $LabelPosition
 @onready var label: Label = $LabelPosition/Label
+@onready var particles : CPUParticles2D = $CPUParticles2D
 
 const LABEL_MESSAGES = [
 	"Cool!",
@@ -18,7 +19,10 @@ var show_message = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if len(polygon_points) > 0:
-		label_position.position = loop_center()
+		var center = loop_center()
+		label_position.position = center
+		particles.position = center
+		particles.emitting = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
