@@ -25,16 +25,21 @@ var medium_goals = [
 var hard_goals = [
 	Goal.ESCAPE_RAPTOR
 ]
-var currentGoals = {
-	Goal.keys()[easy_goals[1]]: false,
-	Goal.keys()[medium_goals[0]]: false,
-	Goal.keys()[hard_goals[0]]: false
-}
+var currentGoals = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var easy_goal = Goal.keys()[easy_goals.pick_random()].capitalize()
+	var medium_goal = Goal.keys()[medium_goals.pick_random()].capitalize()
+	var hard_goal = Goal.keys()[hard_goals.pick_random()].capitalize()
+	
+	currentGoals = {
+		easy_goal: false,
+		medium_goal: false,
+		hard_goal: false
+	}
+	
 	$HUD.get_child(0).currentGoals = currentGoals
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -108,7 +113,7 @@ func _on_raptor_escaped_raptor():
 
 		
 func handle_reached_goal(goal):
-	var reached_goal = Goal.keys()[goal]
+	var reached_goal = Goal.keys()[goal].capitalize()
 	if reached_goal in currentGoals:
 		currentGoals[reached_goal] = true
 		$HUD.get_child(0).currentGoals = currentGoals
