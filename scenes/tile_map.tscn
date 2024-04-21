@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://7lussdms2lva"]
+[gd_scene load_steps=43 format=3 uid="uid://7lussdms2lva"]
 
 [ext_resource type="Texture2D" uid="uid://denqh4m7p0md5" path="res://art/tiles/lighthouse/tile_light_house_0.png" id="1_a0l1c"]
 [ext_resource type="Texture2D" uid="uid://rijbvves4eoa" path="res://art/tiles/sea/tile_sea_fancy_0.png" id="1_oxdbt"]
@@ -13,9 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://du8w6rf4kxs4u" path="res://art/tiles/sea/tile_sea_fancy_2.png" id="7_fya8o"]
 [ext_resource type="Texture2D" uid="uid://bqsdspusjtld3" path="res://art/tiles/lighthouse/tile_light_house_2.png" id="8_2kklv"]
 [ext_resource type="Texture2D" uid="uid://dcfevn6cfgjky" path="res://art/tiles/sea/tile_sea_fancy_3.png" id="8_5goni"]
+[ext_resource type="Texture2D" uid="uid://0u46iaje2oe3" path="res://art/tiles/rubber_ducky/tile_rubber_ducky_0.png" id="9_5mwre"]
 [ext_resource type="Texture2D" uid="uid://usm8vhi6f0kg" path="res://art/tiles/lighthouse/tile_light_house_3.png" id="9_8cnhc"]
+[ext_resource type="Texture2D" uid="uid://yyjhxvfw18mo" path="res://art/tiles/rubber_ducky/tile_rubber_ducky_1.png" id="10_7s3d4"]
 [ext_resource type="Texture2D" uid="uid://1th88d826oo1" path="res://art/tiles/house/tile_house_0.png" id="10_ueniq"]
 [ext_resource type="Texture2D" uid="uid://ct2ccaavayki3" path="res://art/tiles/house/tile_house_1.png" id="11_2nwl8"]
+[ext_resource type="Texture2D" uid="uid://cxgnl4n17pnpw" path="res://art/tiles/rubber_ducky/tile_rubber_ducky_2.png" id="11_c5t0s"]
+[ext_resource type="Texture2D" uid="uid://dvv6aeo3t7qop" path="res://art/tiles/rubber_ducky/tile_rubber_ducky_3.png" id="12_6rvrd"]
 [ext_resource type="Texture2D" uid="uid://biwmsrdlpnks1" path="res://art/tiles/house/tile_house_2.png" id="12_fpco4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6b7w"]
@@ -62,6 +66,30 @@ texture_region_size = Vector2i(130, 175)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ertdn"]
 texture = ExtResource("8_5goni")
+margins = Vector2i(35, 7)
+texture_region_size = Vector2i(130, 175)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bmh3w"]
+texture = ExtResource("9_5mwre")
+margins = Vector2i(35, 7)
+texture_region_size = Vector2i(130, 175)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wppwu"]
+texture = ExtResource("10_7s3d4")
+margins = Vector2i(35, 7)
+texture_region_size = Vector2i(130, 175)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_stuwi"]
+texture = ExtResource("11_c5t0s")
+margins = Vector2i(35, 7)
+texture_region_size = Vector2i(130, 175)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onlbl"]
+texture = ExtResource("12_6rvrd")
 margins = Vector2i(35, 7)
 texture_region_size = Vector2i(130, 175)
 0:0/0 = 0
@@ -142,6 +170,10 @@ sources/0 = SubResource("TileSetAtlasSource_i6b7w")
 sources/11 = SubResource("TileSetAtlasSource_g8qpk")
 sources/14 = SubResource("TileSetAtlasSource_nc6mu")
 sources/15 = SubResource("TileSetAtlasSource_ertdn")
+sources/16 = SubResource("TileSetAtlasSource_bmh3w")
+sources/17 = SubResource("TileSetAtlasSource_wppwu")
+sources/18 = SubResource("TileSetAtlasSource_stuwi")
+sources/19 = SubResource("TileSetAtlasSource_onlbl")
 
 [node name="TileMap" type="TileMap"]
 y_sort_enabled = true
