@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7askbjtprtsp"]
+[gd_scene load_steps=7 format=3 uid="uid://b7askbjtprtsp"]
 
+[ext_resource type="Script" path="res://entities/seagull/sitting_seagull.gd" id="1_nxp1a"]
 [ext_resource type="PackedScene" uid="uid://byk8xdsw26qb6" path="res://scenes/animation_manager.tscn" id="1_wywd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cfdv4"]
@@ -84,6 +85,7 @@ _data = {
 }
 
 [node name="SittingSeagull" type="StaticBody2D"]
+script = ExtResource("1_nxp1a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cfdv4")
