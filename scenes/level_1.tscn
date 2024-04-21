@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwo5n4s0u5xig"]
+[gd_scene load_steps=19 format=3 uid="uid://dwo5n4s0u5xig"]
 
 [ext_resource type="PackedScene" uid="uid://7lussdms2lva" path="res://scenes/tile_map.tscn" id="1_j1hdi"]
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_kmv8a"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ddgtinyo4081h" path="res://scenes/hud.tscn" id="8_p2l40"]
 [ext_resource type="PackedScene" uid="uid://dh58n2abcjcg6" path="res://entities/zeppelin/zeppelin.tscn" id="9_84i0r"]
 [ext_resource type="AudioStream" uid="uid://btscc4tsceh0p" path="res://317435__dobroide__20150721_seagulls01.mp3" id="11_bov14"]
+[ext_resource type="PackedScene" uid="uid://b2hbr4cqj3xbh" path="res://scenes/cloud.tscn" id="12_p465k"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8tsim"]
 
@@ -283,6 +284,44 @@ position = Vector2(44186, 23066)
 
 [node name="Raptor29" parent="Raptors" instance=ExtResource("3_fhjpq")]
 position = Vector2(45658, 22158)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="cloud" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(1580, 1945)
+
+[node name="cloud2" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(6231, 2556)
+
+[node name="cloud3" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(7766, 5288)
+
+[node name="cloud4" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(8709, 5438)
+
+[node name="cloud5" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(16754, 7987)
+
+[node name="cloud7" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(21787, 11980)
+
+[node name="cloud8" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(37987, 20350)
+
+[node name="cloud10" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(38709, 19778)
+
+[node name="cloud11" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(40094, 19336)
+
+[node name="cloud12" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(40439, 18757)
+
+[node name="cloud9" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(29806, 14816)
+
+[node name="cloud6" parent="Node" instance=ExtResource("12_p465k")]
+position = Vector2(13737, 7819)
 
 [connection signal="flock_position" from="Player Flock" to="HUD" method="_on_player_flock_flock_position"]
 [connection signal="flock_travelled_far" from="Player Flock" to="." method="_on_player_flock_flock_travelled_far"]

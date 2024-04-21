@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var start_distance = 48000
+var start_distance = 48000 + 6700
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
