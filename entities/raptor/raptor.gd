@@ -1,5 +1,6 @@
 class_name Raptor
 extends Node2D
+signal escaped_raptor
 
 @onready var animation_manager : AnimationManager = $AnimationManager
 @onready var flight_manager : FlightManager = $FlightManager
@@ -99,3 +100,11 @@ func _on_attack_complete():
 		set_state(State.Chasing)
 	else:
 		set_state(State.Roaming)
+
+
+func _on_detection_radius_body_exited(body):
+	if body.is_in_group('seagulls'):
+		escaped_raptor.emit()
+
+		
+

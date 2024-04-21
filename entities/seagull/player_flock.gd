@@ -2,6 +2,8 @@ extends Node2D
 
 signal place_marker(position, rotation)
 signal game_over
+signal seven_seagulls_in_flock
+signal flock_travelled_far
 
 @onready var seagulls : Node2D = $Seagulls
 @onready var raycast: RayCast2D = $RayCast2D
@@ -15,10 +17,13 @@ var rotation_radians = 0
 var target = Vector2.ZERO
 
 var last_trail_marker_pos = Vector2.ZERO
+var last_position = Vector2.ZERO
+var accumulated_distance = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	last_trail_marker_pos = position
+	last_position = position
 	update_flock_center()
 	flight_manager.target_pos = target
 
@@ -32,9 +37,12 @@ func _process(delta):
 
 	update_seagulls()
 	update_flock_center()
+	update_distance_travelled()
 	
 	if should_add_trail_marker():
-		place_marker.emit(position, rotation_radians) 
+		place_marker.emit(position, rotation_radians)
+	
+	
 		
 func should_add_trail_marker():
 	if last_trail_marker_pos.distance_to(position) > distance_between_markers:
@@ -46,6 +54,9 @@ func update_seagulls():
 	if seagulls.get_child_count() == 0:
 		game_over.emit()
 		return
+	if seagulls.get_child_count() == 7:
+		seven_seagulls_in_flock.emit()
+		
 	for seagull in seagulls.get_children():
 		seagull.look_towards(rotation_radians)
 
@@ -60,6 +71,7 @@ func add_seagull():
 			var new_seagull = preload("res://entities/seagull/seagull.tscn").instantiate()
 			new_seagull.position = new_pos
 			seagulls.add_child(new_seagull)
+			new_seagull.add_to_group("seagulls")
 			placed = true
 		retries -= 1
 	if not placed:
@@ -77,6 +89,12 @@ func update_flock_center():
 	for seagull in seagulls.get_children():
 		center += seagull.position
 	flock_center.position = center / max(count, 1)  # Avoid division by zero
+	
+func update_distance_travelled():
+	accumulated_distance += last_position.distance_to(position)
+	last_position = position
+	if accumulated_distance >= 5000:
+		flock_travelled_far.emit()
 
 func get_speed():
 	var speed = Vector2(flight_manager.speed, 0).rotated(rotation_radians)

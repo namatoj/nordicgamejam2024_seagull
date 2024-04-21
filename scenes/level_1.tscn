@@ -7,7 +7,7 @@
 [ext_resource type="Shader" path="res://shaders/clouds.gdshader" id="5_4duxn"]
 [ext_resource type="PackedScene" uid="uid://b7askbjtprtsp" path="res://entities/seagull/sitting_seagull.tscn" id="5_5uwll"]
 [ext_resource type="Script" path="res://scenes/CloudCover.gd" id="6_51nwp"]
-[ext_resource type="PackedScene" uid="uid://djr04kk8p3omm" path="res://scenes/hud.tscn" id="8_p2l40"]
+[ext_resource type="PackedScene" uid="uid://ddgtinyo4081h" path="res://scenes/hud.tscn" id="8_p2l40"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8tsim"]
 
@@ -63,6 +63,9 @@ offset_bottom = 5000.0
 
 [node name="HUD" parent="." instance=ExtResource("8_p2l40")]
 
+[connection signal="flock_travelled_far" from="Player Flock" to="." method="_on_player_flock_flock_travelled_far"]
 [connection signal="game_over" from="Player Flock" to="." method="_on_player_flock_game_over"]
 [connection signal="place_marker" from="Player Flock" to="." method="_on_player_flock_place_marker"]
+[connection signal="seven_seagulls_in_flock" from="Player Flock" to="." method="_on_player_flock_seven_seagulls_in_flock"]
+[connection signal="escaped_raptor" from="Raptor" to="." method="_on_raptor_escaped_raptor"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

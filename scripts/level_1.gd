@@ -6,17 +6,35 @@ var loop_summon = preload("res://entities/loop_summon.tscn")
 var trail_markers = []
 var first_marker_in_loop_index = -1
 var last_marker_in_loop_index = -1
+var total_number_of_loops = 0
 
-var currentGoals = []
+enum Goal {
+	GROW_THE_FLOCK_TO_7,
+	TAVEL_FAR,
+	ESCAPE_RAPTOR,
+	DO_FIVE_LOOPS,
+}
+
+var easy_goals = [
+	Goal.GROW_THE_FLOCK_TO_7,
+	Goal.DO_FIVE_LOOPS
+]
+var medium_goals = [
+	Goal.TAVEL_FAR
+]
+var hard_goals = [
+	Goal.ESCAPE_RAPTOR
+]
+var currentGoals = {
+	Goal.keys()[easy_goals[1]]: false,
+	Goal.keys()[medium_goals[0]]: false,
+	Goal.keys()[hard_goals[0]]: false
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentGoals = [
-		[false, 'Sample 1 from level'], 
-		[false, 'Sample 2'],
-		[true, 'Sample 3']
-	]
 	$HUD.get_child(0).currentGoals = currentGoals
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,6 +53,13 @@ func _process(delta):
 		for trail_marker in trail_markers:
 			trail_marker.queue_free()
 		trail_markers.clear()
+		
+		total_number_of_loops += 1
+		
+		if total_number_of_loops >= 5:
+			_on_many_loops_goal()
+		
+		
 	
 func trail_has_loop():
 	for i in len(trail_markers) - 1:
@@ -67,3 +92,26 @@ func _on_picked_up_seagull():
 
 func _on_player_flock_game_over():
 	get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+
+
+func _on_player_flock_seven_seagulls_in_flock():
+	handle_reached_goal(Goal.GROW_THE_FLOCK_TO_7)
+
+func _on_player_flock_flock_travelled_far():
+	handle_reached_goal(Goal.TAVEL_FAR)
+		
+func _on_many_loops_goal():
+	handle_reached_goal(Goal.DO_FIVE_LOOPS)
+	
+func _on_raptor_escaped_raptor():
+	handle_reached_goal(Goal.ESCAPE_RAPTOR)
+
+		
+func handle_reached_goal(goal):
+	var reached_goal = Goal.keys()[goal]
+	if reached_goal in currentGoals:
+		currentGoals[reached_goal] = true
+		$HUD.get_child(0).currentGoals = currentGoals
+
+
+

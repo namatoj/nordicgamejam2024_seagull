@@ -11,11 +11,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Goal1.checked = currentGoals[0][0]
-	$Goal1.text = currentGoals[0][1]
-	$Goal2.checked = currentGoals[1][0]
-	$Goal2.text = currentGoals[1][1]
-	$Goal3.checked = currentGoals[2][0]
-	$Goal3.text = currentGoals[2][1]
+	var i = 0
+	var goals = [
+		$Goal1, $Goal2, $Goal3
+	]
+	
+	for key in currentGoals:
+		goals[i].checked = currentGoals[key]
+		goals[i].text = key
+		i += 1
+		
 
 

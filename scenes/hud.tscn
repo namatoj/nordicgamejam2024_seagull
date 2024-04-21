@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://djr04kk8p3omm"]
+[gd_scene load_steps=3 format=3 uid="uid://ddgtinyo4081h"]
 
 [ext_resource type="PackedScene" uid="uid://df2tskmq5p2mh" path="res://entities/hud/goal.tscn" id="1_k2fad"]
 [ext_resource type="Script" path="res://scenes/GoalContainer.gd" id="1_kro8c"]
