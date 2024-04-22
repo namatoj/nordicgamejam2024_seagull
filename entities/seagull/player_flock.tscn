@@ -38,7 +38,7 @@ position = Vector2(20, 90)
 [node name="FlightManager" parent="." instance=ExtResource("3_fxly1")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 

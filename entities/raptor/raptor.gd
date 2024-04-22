@@ -19,7 +19,10 @@ var state : State = State.Roaming
 
 var can_attack = true
 
+var start_position : Vector2
+
 func _ready():
+	start_position = global_position
 	set_new_roam_target()
 
 func _process(_delta):
@@ -60,9 +63,9 @@ func position_reached():
 		set_new_roam_target()
 
 func set_new_roam_target():
-	var roam_range = 500
+	var roam_range = 750
 	var new_roam_target = Vector2(roam_range, 0).rotated(randf_range(-PI/4, PI/4))
-	flight_manager.target_pos = global_position + new_roam_target
+	flight_manager.target_pos = start_position + new_roam_target
 
 func set_state(new_state : State):
 	if state == State.Dying:
