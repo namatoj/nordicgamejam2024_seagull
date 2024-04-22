@@ -23,6 +23,7 @@ GameStats="*res://scripts/game_stats.gd"
 
 window/size/viewport_width=2304
 window/size/viewport_height=1296
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

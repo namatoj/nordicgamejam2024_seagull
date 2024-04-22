@@ -11,7 +11,7 @@ var total_number_of_loops = 0
 
 enum Goal {
 	GROW_THE_FLOCK_TO_7,
-	TAVEL_FAR,
+	TRAVEL_FAR,
 	ESCAPE_RAPTOR,
 	DO_FIVE_LOOPS,
 }
@@ -21,7 +21,7 @@ var easy_goals = [
 	Goal.DO_FIVE_LOOPS
 ]
 var medium_goals = [
-	Goal.TAVEL_FAR
+	Goal.TRAVEL_FAR
 ]
 var hard_goals = [
 	Goal.ESCAPE_RAPTOR
@@ -107,7 +107,7 @@ func _on_player_flock_seven_seagulls_in_flock():
 	handle_reached_goal(Goal.GROW_THE_FLOCK_TO_7)
 
 func _on_player_flock_flock_travelled_far():
-	handle_reached_goal(Goal.TAVEL_FAR)
+	handle_reached_goal(Goal.TRAVEL_FAR)
 		
 func _on_many_loops_goal():
 	handle_reached_goal(Goal.DO_FIVE_LOOPS)
